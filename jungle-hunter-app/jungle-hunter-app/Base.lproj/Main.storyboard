@@ -18,6 +18,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="28R-yf-W5M" kind="relationship" relationship="viewControllers" id="GII-Rx-pdu"/>
+                        <segue destination="GSK-W3-CZg" kind="relationship" relationship="viewControllers" id="LKn-uz-rQx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5X-5T-5B4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -39,6 +40,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFA-eX-90p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-720" y="-147"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Nyy-ud-yrp">
+            <objects>
+                <viewController id="GSK-W3-CZg" customClass="MapViewController" customModule="jungle_hunter_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EvV-fT-A2i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4Ne-UC-wdN"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" id="aop-K2-z5w"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6UF-Yd-x9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="62" y="-147"/>
         </scene>
     </scenes>
 </document>
