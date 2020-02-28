@@ -19,13 +19,30 @@
                     <connections>
                         <segue destination="28R-yf-W5M" kind="relationship" relationship="viewControllers" id="GII-Rx-pdu"/>
                         <segue destination="GSK-W3-CZg" kind="relationship" relationship="viewControllers" id="LKn-uz-rQx"/>
+                        <segue destination="Mxa-9P-jYP" kind="relationship" relationship="viewControllers" id="TNW-n7-vLT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5X-5T-5B4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-719" y="-1013"/>
         </scene>
-        <!--Item-->
+        <!--Photobook View Controller-->
+        <scene sceneID="PqD-e5-Wqp">
+            <objects>
+                <viewController id="Mxa-9P-jYP" customClass="PhotobookViewController" customModule="jungle_hunter_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o6S-xZ-d4f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="SPl-Pe-CDU"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" id="nQj-kq-lto"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oEm-EO-MJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1578" y="-147"/>
+        </scene>
+        <!--Map View Controller-->
         <scene sceneID="d3c-rH-dT8">
             <objects>
                 <viewController id="28R-yf-W5M" customClass="MapViewController" customModule="jungle_hunter_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,7 +52,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CVA-Cj-LXg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Q1G-Jl-5a6"/>
+                    <tabBarItem key="tabBarItem" title="" id="Q1G-Jl-5a6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFA-eX-90p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
