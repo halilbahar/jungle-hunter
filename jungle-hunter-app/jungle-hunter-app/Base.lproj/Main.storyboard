@@ -20,11 +20,28 @@
                         <segue destination="28R-yf-W5M" kind="relationship" relationship="viewControllers" id="GII-Rx-pdu"/>
                         <segue destination="GSK-W3-CZg" kind="relationship" relationship="viewControllers" id="LKn-uz-rQx"/>
                         <segue destination="Mxa-9P-jYP" kind="relationship" relationship="viewControllers" id="TNW-n7-vLT"/>
+                        <segue destination="XU5-nH-IJT" kind="relationship" relationship="viewControllers" id="xYF-SS-Sp6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5X-5T-5B4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-719" y="-1013"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="ME4-h5-VWY">
+            <objects>
+                <viewController id="XU5-nH-IJT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I9G-p0-ntf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bbd-RY-USL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Camera" id="Y8V-08-YY1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uIQ-XU-kTo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2312" y="-150"/>
         </scene>
         <!--Photobook-->
         <scene sceneID="PqD-e5-Wqp">
