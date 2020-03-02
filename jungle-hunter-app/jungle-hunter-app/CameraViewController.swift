@@ -9,22 +9,30 @@
 import UIKit
 
 class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    let cameraVC = UIImagePickerController()
 
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let cameraVC = UIImagePickerController()
         cameraVC.delegate = self
         cameraVC.allowsEditing = false
         
+        openCamera()
+    }
+    
+    func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             cameraVC.sourceType = .camera
             present(cameraVC, animated: true, completion: nil)
         } else {
             print("Currently no source type available")
         }
+    }
+    
+    @IBAction func retakePhoto(_ sender: Any) {
+        openCamera()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
