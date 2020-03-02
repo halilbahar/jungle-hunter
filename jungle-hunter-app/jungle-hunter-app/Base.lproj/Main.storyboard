@@ -17,6 +17,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBar" destination="nHf-sW-fUZ" id="lKz-Di-9ay"/>
                         <segue destination="28R-yf-W5M" kind="relationship" relationship="viewControllers" id="GII-Rx-pdu"/>
                         <segue destination="GSK-W3-CZg" kind="relationship" relationship="viewControllers" id="LKn-uz-rQx"/>
                         <segue destination="Mxa-9P-jYP" kind="relationship" relationship="viewControllers" id="TNW-n7-vLT"/>
@@ -37,7 +38,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bbd-RY-USL"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Camera" id="Y8V-08-YY1"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera.fill" catalog="system" id="Y8V-08-YY1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIQ-XU-kTo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +54,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="SPl-Pe-CDU"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photobook" id="nQj-kq-lto"/>
+                    <tabBarItem key="tabBarItem" title="Photobook" image="photobook" id="nQj-kq-lto"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEm-EO-MJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,7 +70,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CVA-Cj-LXg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="Q1G-Jl-5a6"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map-icon" id="Q1G-Jl-5a6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFA-eX-90p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,11 +86,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="4Ne-UC-wdN"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tracklist" id="aop-K2-z5w"/>
+                    <tabBarItem key="tabBarItem" title="Tracklist" image="search" id="aop-K2-z5w"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UF-Yd-x9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1074" y="-206"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
+        <image name="map-icon" width="24" height="24"/>
+        <image name="photobook" width="24" height="24"/>
+        <image name="search" width="24" height="24"/>
+    </resources>
 </document>
