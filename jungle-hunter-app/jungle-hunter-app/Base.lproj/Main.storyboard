@@ -31,18 +31,27 @@
         <!--Camera-->
         <scene sceneID="ME4-h5-VWY">
             <objects>
-                <viewController id="XU5-nH-IJT" sceneMemberID="viewController">
+                <viewController id="XU5-nH-IJT" customClass="CameraViewController" customModule="jungle_hunter_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I9G-p0-ntf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4DI-zG-Wh6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bbd-RY-USL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera" image="camera.fill" catalog="system" id="Y8V-08-YY1"/>
+                    <connections>
+                        <outlet property="imageView" destination="4DI-zG-Wh6" id="NLy-zl-ZIK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIQ-XU-kTo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="358" y="-206"/>
+            <point key="canvasLocation" x="356.52173913043481" y="-206.25"/>
         </scene>
         <!--Photobook-->
         <scene sceneID="PqD-e5-Wqp">
