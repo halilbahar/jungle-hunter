@@ -15,10 +15,11 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let cameraVC = UIImagePickerController()
+        cameraVC.delegate = self
+        cameraVC.allowsEditing = false
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraVC = UIImagePickerController()
-            cameraVC.delegate = self
-            cameraVC.allowsEditing = false
             cameraVC.sourceType = .camera
             present(cameraVC, animated: true, completion: nil)
         } else {
@@ -26,15 +27,11 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        // populate imageView
+        imageView.image = image
+        
+        picker.dismiss(animated: true, completion: nil)
     }
-    */
-
 }
