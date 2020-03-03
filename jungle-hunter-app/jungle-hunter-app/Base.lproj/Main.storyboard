@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HYn-ET-w9S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HYn-ET-w9S">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -89,14 +89,25 @@
                     <view key="view" contentMode="scaleToFill" id="WBD-cl-Wbq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2q6-Gd-7or">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="leading" secondItem="CVA-Cj-LXg" secondAttribute="leading" id="6FF-rz-IE2"/>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="trailing" secondItem="CVA-Cj-LXg" secondAttribute="trailing" id="k5c-01-tOv"/>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="top" secondItem="WBD-cl-Wbq" secondAttribute="top" id="mcJ-of-HSZ"/>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="bottom" secondItem="CVA-Cj-LXg" secondAttribute="bottom" id="qyE-hx-k1E"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CVA-Cj-LXg"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map-icon" id="Q1G-Jl-5a6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFA-eX-90p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1797" y="-206"/>
+            <point key="canvasLocation" x="-1797.1014492753625" y="-206.25"/>
         </scene>
         <!--Tracklist-->
         <scene sceneID="Nyy-ud-yrp">
