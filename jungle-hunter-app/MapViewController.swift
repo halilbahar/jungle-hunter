@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Contacts
+import MapKit
 
 class MapViewController: UIViewController {
-
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+       let coords = CLLocationCoordinate2DMake(51.5083, -0.1384)
+
+        let address = [/*CNPostalAddressStreetKey: "181 Piccadilly, St. James's", CNPostalAddressCityKey: "London", CNPostalAddressPostalCodeKey: "W1A 1ER",*/ CNPostalAddressISOCountryCodeKey: "GB"]
+        
+        let place = MKPlacemark(coordinate: coords, addressDictionary: address)
+        
+        mapView.addAnnotation(place)
     }
     
 

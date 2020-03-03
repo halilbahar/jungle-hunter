@@ -104,6 +104,9 @@
                         <viewLayoutGuide key="safeArea" id="CVA-Cj-LXg"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map-icon" id="Q1G-Jl-5a6"/>
+                    <connections>
+                        <outlet property="mapView" destination="2q6-Gd-7or" id="c43-qZ-CYJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFA-eX-90p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
