@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HYn-ET-w9S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HYn-ET-w9S">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                     </tabBar>
                     <connections>
                         <outlet property="tabBar" destination="nHf-sW-fUZ" id="lKz-Di-9ay"/>
-                        <segue destination="28R-yf-W5M" kind="relationship" relationship="viewControllers" id="GII-Rx-pdu"/>
+                        <segue destination="n4D-ah-rfX" kind="relationship" relationship="viewControllers" id="GII-Rx-pdu"/>
                         <segue destination="GSK-W3-CZg" kind="relationship" relationship="viewControllers" id="LKn-uz-rQx"/>
                         <segue destination="Mxa-9P-jYP" kind="relationship" relationship="viewControllers" id="TNW-n7-vLT"/>
                         <segue destination="XU5-nH-IJT" kind="relationship" relationship="viewControllers" id="xYF-SS-Sp6"/>
@@ -64,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIQ-XU-kTo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="356.52173913043481" y="-206.25"/>
+            <point key="canvasLocation" x="1266.6666666666667" y="-206.25"/>
         </scene>
         <!--Photobook-->
         <scene sceneID="PqD-e5-Wqp">
@@ -80,9 +80,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEm-EO-MJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-361" y="-206"/>
+            <point key="canvasLocation" x="547.82608695652175" y="-206.25"/>
         </scene>
-        <!--Map-->
+        <!--Map View Controller-->
         <scene sceneID="d3c-rH-dT8">
             <objects>
                 <viewController id="28R-yf-W5M" customClass="MapViewController" customModule="jungle_hunter_app" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,26 +91,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2q6-Gd-7or">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="2q6-Gd-7or" firstAttribute="leading" secondItem="CVA-Cj-LXg" secondAttribute="leading" id="6FF-rz-IE2"/>
-                            <constraint firstItem="2q6-Gd-7or" firstAttribute="trailing" secondItem="CVA-Cj-LXg" secondAttribute="trailing" id="k5c-01-tOv"/>
-                            <constraint firstItem="2q6-Gd-7or" firstAttribute="top" secondItem="WBD-cl-Wbq" secondAttribute="top" id="mcJ-of-HSZ"/>
-                            <constraint firstItem="2q6-Gd-7or" firstAttribute="bottom" secondItem="CVA-Cj-LXg" secondAttribute="bottom" id="qyE-hx-k1E"/>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="centerY" secondItem="WBD-cl-Wbq" secondAttribute="centerY" id="GWZ-nk-cgG"/>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="centerX" secondItem="WBD-cl-Wbq" secondAttribute="centerX" id="JCK-Sm-SL3"/>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="top" secondItem="WBD-cl-Wbq" secondAttribute="topMargin" constant="-88" id="Xhs-so-v9c"/>
+                            <constraint firstItem="2q6-Gd-7or" firstAttribute="leading" secondItem="CVA-Cj-LXg" secondAttribute="leading" id="tkk-Fg-4I5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CVA-Cj-LXg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="map-icon" id="Q1G-Jl-5a6"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Nvy-jT-CfL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="two-3O-k43">
+                            <connections>
+                                <action selector="searchButton:" destination="28R-yf-W5M" id="ZEl-aI-5sq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="2q6-Gd-7or" id="c43-qZ-CYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFA-eX-90p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1797.1014492753625" y="-206.25"/>
+            <point key="canvasLocation" x="-886.95652173913049" y="-206.25"/>
         </scene>
         <!--Tracklist-->
         <scene sceneID="Nyy-ud-yrp">
@@ -126,7 +134,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UF-Yd-x9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1074" y="-206"/>
+            <point key="canvasLocation" x="-165.21739130434784" y="-206.25"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="sDf-Mv-v6l">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n4D-ah-rfX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map-icon" id="Q1G-Jl-5a6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rY3-FT-6mA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="28R-yf-W5M" kind="relationship" relationship="rootViewController" id="MyN-lW-v9k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RIf-K1-vpG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1797.1014492753625" y="-206.25"/>
         </scene>
     </scenes>
     <resources>

@@ -1,32 +1,21 @@
-//
-//  MapViewController.swift
-//  jungle-hunter-app
-//
-//  Created by Sonja Cao on 28.02.20.
-//  Copyright © 2020 htl-leonding. All rights reserved.
-//
 
 import UIKit
 import Contacts
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-       let coords = CLLocationCoordinate2DMake(51.5083, -0.1384)
-
-        let address = [/*CNPostalAddressStreetKey: "181 Piccadilly, St. James's", CNPostalAddressCityKey: "London", CNPostalAddressPostalCodeKey: "W1A 1ER",*/ CNPostalAddressISOCountryCodeKey: "GB"]
-        
-        let place = MKPlacemark(coordinate: coords, addressDictionary: address)
-        
-        mapView.addAnnotation(place)
+    @IBAction func searchButton(_ sender: Any) {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        present(searchController, animated: true, completion: nil)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
     /*
     // MARK: - Navigation

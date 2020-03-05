@@ -67,11 +67,11 @@
 				C31217872405713C00F25806 /* Main.storyboard */,
 				1784A9752409084D00649676 /* CameraViewController.swift */,
 				1784A9732409069D00649676 /* PhotobookViewController.swift */,
+				1784A96F2409038300649676 /* MapViewController.swift */,
 				1784A971240905FC00649676 /* TrackViewController.swift */,
 				C312178A2405713D00F25806 /* Assets.xcassets */,
 				C312178C2405713D00F25806 /* LaunchScreen.storyboard */,
 				C312178F2405713D00F25806 /* Info.plist */,
-				1784A96F2409038300649676 /* MapViewController.swift */,
 			);
 			path = "jungle-hunter-app";
 			sourceTree = "<group>";
