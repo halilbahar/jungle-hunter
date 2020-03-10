@@ -105,7 +105,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Nvy-jT-CfL">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="two-3O-k43">
+                        <barButtonItem key="rightBarButtonItem" image="search" id="two-3O-k43">
                             <connections>
                                 <action selector="searchButton:" destination="28R-yf-W5M" id="ZEl-aI-5sq"/>
                             </connections>

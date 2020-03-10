@@ -15,6 +15,11 @@ class MapViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.view.backgroundColor = .clear
     }
 
     /*
@@ -26,5 +31,4 @@ class MapViewController: UIViewController, UISearchBarDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
