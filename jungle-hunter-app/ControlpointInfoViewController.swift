@@ -13,8 +13,7 @@ class ControlpointInfoViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var latitude: UILabel!
     @IBOutlet weak var longitude: UILabel!
-    @IBOutlet weak var desc: UILabel!
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var comment: UILabel!
     
     var controlpoint: ControlPoint!
         
@@ -23,10 +22,9 @@ class ControlpointInfoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         name.text = controlpoint.name
-        latitude.text = "Latitude: " + String(controlpoint.latitude)
-        longitude.text = "Longitude: " + String(controlpoint.longitude)
-        desc.text = controlpoint.description
-        image.image = UIImage(data: try! Data(contentsOf: URL(string: controlpoint.image)!))
+        latitude.text = "Latitude: " + String(controlpoint.coordinates[0])
+        longitude.text = "Longitude: " + String(controlpoint.coordinates[1])
+        comment.text = controlpoint.comment
     }
         
 

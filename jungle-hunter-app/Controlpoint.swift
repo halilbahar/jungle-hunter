@@ -1,23 +1,23 @@
 class ControlPoint {
+    var id: Int
     var name: String
-    var latitude: Double
-    var longitude: Double
-    var description: String
-    var image: String
+    var coordinates: [Double]
+    var comment: String
+    var note: String
     
     init (controlpointDict: [String:Any]) {
+        self.id = controlpointDict["id"] as! Int
         self.name = controlpointDict["name"] as! String
-        self.latitude = controlpointDict["latitude"] as! Double
-        self.longitude = controlpointDict["longitude"] as! Double
-        self.description = controlpointDict["description"] as! String
-        self.image = controlpointDict["image"] as! String
+        self.coordinates = controlpointDict["coordinates"] as! [Double]
+        self.comment = controlpointDict["comment"] as! String
+        self.note = controlpointDict["note"] as! String
     }
     
-    init(name: String, latitude: Double, longitude: Double, description: String, image: String) {
+    init(id: Int, name: String, coordinates: [Double], comment: String, note: String) {
+        self.id = id
         self.name = name
-        self.latitude = latitude
-        self.longitude = longitude
-        self.description = description
-        self.image = image
+        self.coordinates = coordinates
+        self.comment = comment
+        self.note = note
     }
 }

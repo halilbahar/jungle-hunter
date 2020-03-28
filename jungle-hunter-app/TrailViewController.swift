@@ -12,7 +12,7 @@ class TrailViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     var dataSource : DataSourceTracks!
-        var trails = [Trail]()
+    var routes = [Route]()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -20,22 +20,46 @@ class TrailViewController: UIViewController {
             // Do any additional setup after loading the view.
             dataSource = DataSourceTracks()
             tableView.dataSource = dataSource
-            self.tableView.rowHeight = 100
+            self.tableView.rowHeight = 60
             
-            //Fill Tracks
-            self.trails = [
-                Trail(name: "Far far Away", country: "A", controlpoints: [
-                 ControlPoint(name: "Tragwein", latitude: 48.33, longitude: 14.62, description: "A kleiner Ort", image: "https://media.images-tiscover.com/at/images/RGN/295/RGN134295at/tragwein03-oberoesterreich.jpg"),
-                 ControlPoint(name: "Eferding", latitude: 48.3, longitude: 14.02, description: "a größerer Ort", image: "https://media.images-tiscover.com/at/images/RGN/295/RGN134295at/tragwein03-oberoesterreich.jpg"),
-                 ControlPoint(name: "Stroheim", latitude: 48.19, longitude: 13.56, description: "is des a Ort", image: "https://austria-forum.org/attach/Wissenssammlungen/Bildlexikon_%C3%96sterreich/Orte_in_Ober%C3%B6sterreich/Stroheim/Stroheim/cfressel_Gemeinde_Luftaufnahme.jpg")
-                ]),
-                Trail(name: "Schule", country: "A", controlpoints: [
-                    ControlPoint(name: "Linz", latitude: 48.18, longitude: 14.18, description: "Landeshauptstadt", image: "https://upload.wikimedia.org/wikipedia/commons/7/77/Linz_view_2.jpg"),
-                    ControlPoint(name: "Leonding", latitude: 48.16, longitude: 14.15, description: "Ort der HTL", image: "https://i.ytimg.com/vi/JDQ5O3CNzuM/maxresdefault.jpg")
-                ])
-            ]
+            //Fill Trails
+            self.routes = [Route(name: "Europaeische Urwaldroute",start: "Rügen", url: "https://www.alpenvereinaktiv.com/de/liste/urwaldroute/112748914/?share=%7Ezefck7tv%244ossy7ga", description: "entlang E10 West (blauer Balken als Markierung, der E10 ist ein Rundweg auf Rügen), mit Piratensteig (Holztreppen) vor Sassnitz zur Steilküste und wieder hinauf vor Sassnitz Problem: keine E10-Wegetafeln",
+                trails:  [
+                    Trail(trailID: 01, name: "Kontrollstellen Sassnitz - Stralsund", length: 105.7,
+                          controlpoints: [
+                            ControlPoint(id: 010, name: "Viktoriablick", coordinates: [
+                                    9.228515625,
+                                    44.96479793033101
+                                    ],
+                                comment: "Viktoriablick beim Besucherzentrum Königsstuhl bei Sassnitz/Rügen, NP Jasmund",
+                                note: "Rampe"
+                            ),
+                            ControlPoint(
+                                id: 011,
+                                name: "Waldhalle",
+                                coordinates: [
+                                    9.228515625,
+                                    44.96479793033101
+                                    ],
+                                comment:"Waldhalle im NP Jasmund bei Wissowkliniken",
+                                note:"Vor der Waldhalle/ Welterbeforum auf Tisch"
+                            ),
+                            ControlPoint(
+                                id: 012,
+                                name: "Stralsund",
+                                coordinates: [
+                                    9.228515625,
+                                    44.96479793033101
+                                    ],
+                                comment:"Brücke über Ostsee / Rügendamm",
+                                note:"Vor der Waldhalle/ Welterbeforum auf Tisch"
+                            )
+                        ]
+                    )
+                ]
+            )]
             
-            self.dataSource.trails = self.trails
+            self.dataSource.routes = self.routes
         }
         
 
@@ -53,7 +77,7 @@ class TrailViewController: UIViewController {
         if let controlpointVC = segue.destination as? ControlpointViewController {
             let indexPath = tableView.indexPathForSelectedRow
             
-            controlpointVC.controlpoints = trails[indexPath!.row].controlpoints
+            controlpointVC.controlpoints = routes[0].trails[indexPath!.row].controlpoints
         }
         
     }
@@ -62,24 +86,22 @@ class TrailViewController: UIViewController {
     }
 
     class DataSourceTracks: NSObject, UITableViewDataSource {
-        var trails = [Trail]()
+        var routes = [Route]()
 
          func numberOfSections(in tableView: UITableView) -> Int {
              return 1
          }
          func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return trails.count
+            return routes[0].trails.count
          }
 
          func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
              let cell = tableView.dequeueReusableCell(withIdentifier: "trailCell", for: indexPath) as! TableViewCell
              
          
-            cell.trail_name.text = trails[indexPath.row].name
-            cell.trail_country.text = trails[indexPath.row].country
-            cell.trail_start.text = trails[indexPath.row].controlpoints[0].name
-            cell.trail_end.text = trails[indexPath.row].controlpoints[trails[indexPath.row].controlpoints.count - 1].name
-             
+            cell.trail_name.text = routes[0].trails[indexPath.row].name
+            cell.trail_length.text = String(routes[0].trails[indexPath.row].length)
+           
              return cell
          }
      }

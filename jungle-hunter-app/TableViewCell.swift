@@ -12,14 +12,11 @@ class TableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var trail_name: UILabel!
-    @IBOutlet weak var trail_country: UILabel!
-    @IBOutlet weak var trail_start: UILabel!
-    @IBOutlet weak var trail_end: UILabel!
-    
-    
+    @IBOutlet weak var trail_length: UILabel!
+        
     @IBOutlet weak var controlpoint_name: UILabel!
-    @IBOutlet weak var controlpoint_description: UILabel!
-    @IBOutlet weak var controlpoint_image: UIImageView!
+    @IBOutlet weak var controlpoint_comment: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

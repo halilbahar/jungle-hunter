@@ -12,8 +12,8 @@ class ControlpointViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-     var dataSource: DataSourceControlpoints!
-        var controlpoints = [ControlPoint]()
+    var dataSource: DataSourceControlpoints!
+    var controlpoints = [ControlPoint]()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -21,7 +21,7 @@ class ControlpointViewController: UIViewController {
             // Do any additional setup after loading the view.
             dataSource = DataSourceControlpoints()
             tableView.dataSource = dataSource
-            self.tableView.rowHeight = 100
+            self.tableView.rowHeight = 80
             
             self.dataSource.controlpoints = self.controlpoints
         }
@@ -63,9 +63,8 @@ class ControlpointViewController: UIViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "controlpointCell", for: indexPath) as! TableViewCell
             
             cell.controlpoint_name.text = controlpoints[indexPath.row].name
-            cell.controlpoint_description.text = controlpoints[indexPath.row].description
-            cell.controlpoint_image.image = UIImage(data: try! Data(contentsOf: URL(string: controlpoints[indexPath.row].image)!))
-            
+            cell.controlpoint_comment.text = controlpoints[indexPath.row].comment
+         
             return cell
         }
     }

@@ -10,6 +10,7 @@
 		1784A9702409038300649676 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A96F2409038300649676 /* MapViewController.swift */; };
 		1784A9742409069D00649676 /* PhotobookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A9732409069D00649676 /* PhotobookViewController.swift */; };
 		1784A9762409084D00649676 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A9752409084D00649676 /* CameraViewController.swift */; };
+		C311CBA7242F8C8E0005DAA1 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C311CBA6242F8C8E0005DAA1 /* Route.swift */; };
 		C31217822405713C00F25806 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31217812405713C00F25806 /* AppDelegate.swift */; };
 		C31217842405713C00F25806 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31217832405713C00F25806 /* SceneDelegate.swift */; };
 		C31217892405713C00F25806 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C31217872405713C00F25806 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		1784A96F2409038300649676 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1784A9732409069D00649676 /* PhotobookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotobookViewController.swift; sourceTree = "<group>"; };
 		1784A9752409084D00649676 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		C311CBA6242F8C8E0005DAA1 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C312177E2405713C00F25806 /* jungle-hunter-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jungle-hunter-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31217812405713C00F25806 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C31217832405713C00F25806 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				1784A9752409084D00649676 /* CameraViewController.swift */,
 				1784A9732409069D00649676 /* PhotobookViewController.swift */,
 				1784A96F2409038300649676 /* MapViewController.swift */,
+				C311CBA6242F8C8E0005DAA1 /* Route.swift */,
 				C312178A2405713D00F25806 /* Assets.xcassets */,
 				C312178C2405713D00F25806 /* LaunchScreen.storyboard */,
 				C312178F2405713D00F25806 /* Info.plist */,
@@ -171,6 +174,7 @@
 				C38D680F242A82E400FBCF94 /* TableViewCell.swift in Sources */,
 				C38D6807242A816C00FBCF94 /* ControlpointViewController.swift in Sources */,
 				C38D6809242A817D00FBCF94 /* ControlpointInfoViewController.swift in Sources */,
+				C311CBA7242F8C8E0005DAA1 /* Route.swift in Sources */,
 				1784A9762409084D00649676 /* CameraViewController.swift in Sources */,
 				1784A9702409038300649676 /* MapViewController.swift in Sources */,
 			);

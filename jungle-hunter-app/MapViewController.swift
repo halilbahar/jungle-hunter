@@ -6,7 +6,7 @@ import MapKit
 class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    var trails = [Trail]()
+    var routes = [Route]()
     var controlpoint: ControlPoint!
     
     
@@ -26,24 +26,48 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         
         self.mapView.delegate = self
         
-        self.trails = [
-                    Trail(name: "Far far Away", country: "A", controlpoints: [
-                     ControlPoint(name: "Tragwein", latitude: 48.33, longitude: 14.62, description: "A kleiner Ort", image: "https://media.images-tiscover.com/at/images/RGN/295/RGN134295at/tragwein03-oberoesterreich.jpg"),
-                     ControlPoint(name: "Eferding", latitude: 48.3, longitude: 14.02, description: "a größerer Ort", image: "https://media.images-tiscover.com/at/images/RGN/295/RGN134295at/tragwein03-oberoesterreich.jpg"),
-                     ControlPoint(name: "Stroheim", latitude: 48.19, longitude: 13.56, description: "is des a Ort", image: "https://austria-forum.org/attach/Wissenssammlungen/Bildlexikon_%C3%96sterreich/Orte_in_Ober%C3%B6sterreich/Stroheim/Stroheim/cfressel_Gemeinde_Luftaufnahme.jpg")
-                    ]),
-                    Trail(name: "Schule", country: "A", controlpoints: [
-                        ControlPoint(name: "Linz", latitude: 48.18, longitude: 14.18, description: "Landeshauptstadt", image: "https://upload.wikimedia.org/wikipedia/commons/7/77/Linz_view_2.jpg"),
-                        ControlPoint(name: "Leonding", latitude: 48.16, longitude: 14.15, description: "Ort der HTL", image: "https://i.ytimg.com/vi/JDQ5O3CNzuM/maxresdefault.jpg")
-                    ])
-                ]
+        self.routes = [Route(name: "Europaeische Urwaldroute",start: "Rügen", url: "https://www.alpenvereinaktiv.com/de/liste/urwaldroute/112748914/?share=%7Ezefck7tv%244ossy7ga", description: "entlang E10 West (blauer Balken als Markierung, der E10 ist ein Rundweg auf Rügen), mit Piratensteig (Holztreppen) vor Sassnitz zur Steilküste und wieder hinauf vor Sassnitz Problem: keine E10-Wegetafeln",
+            trails:  [
+                Trail(trailID: 01, name: "Kontrollstellen Sassnitz - Stralsund", length: 105.7,
+                      controlpoints: [
+                        ControlPoint(id: 010, name: "Viktoriablick", coordinates: [
+                                9.228515625,
+                                44.96479793033101
+                                ],
+                            comment: "Viktoriablick beim Besucherzentrum Königsstuhl bei Sassnitz/Rügen, NP Jasmund",
+                            note: "Rampe"
+                        ),
+                        ControlPoint(
+                            id: 011,
+                            name: "Waldhalle",
+                            coordinates: [
+                                9.228515625,
+                                44.96479793033101
+                                ],
+                            comment:"Waldhalle im NP Jasmund bei Wissowkliniken",
+                            note:"Vor der Waldhalle/ Welterbeforum auf Tisch"
+                        ),
+                        ControlPoint(
+                            id: 012,
+                            name: "Stralsund",
+                            coordinates: [
+                                9.228515625,
+                                44.96479793033101
+                                ],
+                            comment:"Brücke über Ostsee / Rügendamm",
+                            note:"Vor der Waldhalle/ Welterbeforum auf Tisch"
+                        )
+                    ]
+                )
+            ]
+        )]
          
-         for trail in self.trails {
+        for trail in self.routes[0].trails {
              var mapTrail = [MKPointAnnotation]()
              for controlpoint in trail.controlpoints {
                 let annotation = MKPointAnnotation()
                  annotation.title = controlpoint.name
-                 annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.latitude, controlpoint.longitude)
+                annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[0], controlpoint.coordinates[1])
                  
                  mapTrail.append(annotation)
              }
@@ -62,7 +86,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-         for trail in trails {
+        for trail in routes[0].trails {
              for cpoint in trail.controlpoints {
                  if(cpoint.name == mapView.selectedAnnotations[0].title!!) {
                      self.controlpoint = cpoint
