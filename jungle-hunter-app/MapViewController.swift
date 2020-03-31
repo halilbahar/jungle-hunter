@@ -26,8 +26,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         
         self.mapView.delegate = self
         
-        let url = URL(string:"https://www.mocky.io/v2/5e8317053100004b00e6406c")
-        
+        let url = URL(string:"https://www.mocky.io/v2/5e8317053100004b00e6406c")//Paste HTTP Response url here
         if let dataUrl = url {
                 let data = try? Data(contentsOf: dataUrl)
                 if let downloadedData = data {

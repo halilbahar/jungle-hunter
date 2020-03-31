@@ -24,3 +24,11 @@ The aim of this project is to motivate people to go out and explore those jungle
 ### [YouTrack](https://vm81.htl-leonding.ac.at/agiles/99-198/100-779)
 
 
+### Installation:
+
+Currently you need to setup a "fake" HTTP Response for the App, to display controlpoints:
+
+1. Open [Mocky](https://www.mocky.io). Then copy & paste the content of the **data.json** file, which is found in the root directory of the repo, into the body part of the form. 
+2. Then click onto the Generate HTTP Response button
+3. Copy the url and paste it into the **MapViewController.swift** file instead of the old mocky link
+4. If the link is not **https** by default, just add a "s" after "http" in the MapViewController.swift 
