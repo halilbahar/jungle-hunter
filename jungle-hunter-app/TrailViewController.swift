@@ -23,7 +23,7 @@ class TrailViewController: UIViewController {
             self.tableView.rowHeight = 60
             
             //Fill Trails
-            self.routes = [Route(name: "Europaeische Urwaldroute",start: "Rügen", url: "https://www.alpenvereinaktiv.com/de/liste/urwaldroute/112748914/?share=%7Ezefck7tv%244ossy7ga", description: "entlang E10 West (blauer Balken als Markierung, der E10 ist ein Rundweg auf Rügen), mit Piratensteig (Holztreppen) vor Sassnitz zur Steilküste und wieder hinauf vor Sassnitz Problem: keine E10-Wegetafeln",
+            /*self.routes = [Route(name: "Europaeische Urwaldroute",start: "Rügen", url: "https://www.alpenvereinaktiv.com/de/liste/urwaldroute/112748914/?share=%7Ezefck7tv%244ossy7ga", description: "entlang E10 West (blauer Balken als Markierung, der E10 ist ein Rundweg auf Rügen), mit Piratensteig (Holztreppen) vor Sassnitz zur Steilküste und wieder hinauf vor Sassnitz Problem: keine E10-Wegetafeln",
                 trails:  [
                     Trail(trailID: 01, name: "Kontrollstellen Sassnitz - Stralsund", length: 105.7,
                           controlpoints: [
@@ -57,7 +57,7 @@ class TrailViewController: UIViewController {
                         ]
                     )
                 ]
-            )]
+            )]*/
             
             self.dataSource.routes = self.routes
         }

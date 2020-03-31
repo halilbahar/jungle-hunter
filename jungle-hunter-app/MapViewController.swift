@@ -26,53 +26,38 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         
         self.mapView.delegate = self
         
-        self.routes = [Route(name: "Europaeische Urwaldroute",start: "Rügen", url: "https://www.alpenvereinaktiv.com/de/liste/urwaldroute/112748914/?share=%7Ezefck7tv%244ossy7ga", description: "entlang E10 West (blauer Balken als Markierung, der E10 ist ein Rundweg auf Rügen), mit Piratensteig (Holztreppen) vor Sassnitz zur Steilküste und wieder hinauf vor Sassnitz Problem: keine E10-Wegetafeln",
-            trails:  [
-                Trail(trailID: 01, name: "Kontrollstellen Sassnitz - Stralsund", length: 105.7,
-                      controlpoints: [
-                        ControlPoint(id: 010, name: "Viktoriablick", coordinates: [
-                                9.228515625,
-                                44.96479793033101
-                                ],
-                            comment: "Viktoriablick beim Besucherzentrum Königsstuhl bei Sassnitz/Rügen, NP Jasmund",
-                            note: "Rampe"
-                        ),
-                        ControlPoint(
-                            id: 011,
-                            name: "Waldhalle",
-                            coordinates: [
-                                9.228515625,
-                                44.96479793033101
-                                ],
-                            comment:"Waldhalle im NP Jasmund bei Wissowkliniken",
-                            note:"Vor der Waldhalle/ Welterbeforum auf Tisch"
-                        ),
-                        ControlPoint(
-                            id: 012,
-                            name: "Stralsund",
-                            coordinates: [
-                                9.228515625,
-                                44.96479793033101
-                                ],
-                            comment:"Brücke über Ostsee / Rügendamm",
-                            note:"Vor der Waldhalle/ Welterbeforum auf Tisch"
-                        )
-                    ]
-                )
-            ]
-        )]
-         
-        for trail in self.routes[0].trails {
-             var mapTrail = [MKPointAnnotation]()
-             for controlpoint in trail.controlpoints {
-                let annotation = MKPointAnnotation()
-                 annotation.title = controlpoint.name
-                annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[0], controlpoint.coordinates[1])
-                 
-                 mapTrail.append(annotation)
-             }
-             self.mapView.showAnnotations(mapTrail, animated: true)
-    }
+        let queue = DispatchQueue(label: "myqueue")
+        let url = URL(string:"https://www.mocky.io/v2/5e8317053100004b00e6406c")
+        
+        if let dataUrl = url {
+                let data = try? Data(contentsOf: dataUrl)
+                if let downloadedData = data {
+                    if let jsonObject = try? JSONSerialization.jsonObject(with: downloadedData, options: []) as? [[String:Any]]{
+                        self.routes = jsonObject.map{Route(routeDict: $0)}
+                        print(self.routes)
+                        for trail in self.routes[0].trails {
+                                 var mapTrail = [MKPointAnnotation]()
+                                 for controlpoint in trail.controlpoints {
+                                    let annotation = MKPointAnnotation()
+                                     annotation.title = controlpoint.name
+                                    annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[0], controlpoint.coordinates[1])
+                                     
+                                     mapTrail.append(annotation)
+                                 }
+                                 self.mapView.showAnnotations(mapTrail, animated: true)
+                        }                    }else{
+                        print("jsonObject")
+                    }
+                    
+                }else{
+                    print("downloadedData")
+                }
+                
+            }else{
+                print("dataUrl")
+            }
+        
+        
 
     /*
     // MARK: - Navigation
@@ -104,4 +89,5 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
          }
          
      }
+    
 }
