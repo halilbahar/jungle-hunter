@@ -1,0 +1,43 @@
+[{
+    "name": "Europaeische Urwaldroute",
+    "start": "RÃ¼gen",
+    "url": "https://www.alpenvereinaktiv.com/de/liste/urwaldroute/112748914/?share=%7Ezefck7tv%244ossy7ga",
+    "description": "entlang E10 West (blauer Balken als Markierung, der E10 ist ein Rundweg auf RÃ¼gen), mit Piratensteig (Holztreppen) vor Sassnitz zur SteilkÃ¼ste und wieder hinauf vor Sassnitz Problem: keine E10-Wegetafeln",
+    "trails" :  [
+        {
+            "trailID": "01",
+            "name": "Kontrollstellen Sassnitz - Stralsund",
+            "length": "105.7",
+            "controlpoints": [
+                {
+                    "id": "010",
+                    "name": "Viktoriablick",
+                    "coordinates": [
+                        9.228515625,
+                        44.96479793033101
+                        ],
+                    "comment":"Viktoriablick beim Besucherzentrum KÃ¶nigsstuhl bei Sassnitz/RÃ¼gen, NP Jasmund",
+                    "note":"Rampe"
+                },{
+                    "id": "011",
+                    "name": "Waldhalle",
+                    "coordinates": [
+                        9.228515625,
+                        44.96479793033101
+                        ],
+                    "comment":"Waldhalle im NP Jasmund bei Wissowkliniken",
+                    "note":"Vor der Waldhalle/ Welterbeforum auf Tisch"
+                },{
+                    "id": "012",
+                    "name": "Stralsund",
+                    "coordinates": [
+                        9.228515625,
+                        44.96479793033101
+                        ],
+                    "comment":"BrÃ¼cke Ã¼ber Ostsee / RÃ¼gendamm",
+                    "note":"Vor der Waldhalle/ Welterbeforum auf Tisch"
+                }
+            ]
+        }
+    ]
+}]
