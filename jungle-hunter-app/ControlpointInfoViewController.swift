@@ -22,8 +22,8 @@ class ControlpointInfoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         name.text = controlpoint.name
-        latitude.text = "Latitude: " + String(controlpoint.coordinates[0])
-        longitude.text = "Longitude: " + String(controlpoint.coordinates[1])
+        latitude.text = "Latitude: " + String(controlpoint.coordinates[1])
+        longitude.text = "Longitude: " + String(controlpoint.coordinates[0])
         comment.text = controlpoint.comment
     }
         

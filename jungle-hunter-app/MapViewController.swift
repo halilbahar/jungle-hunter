@@ -26,7 +26,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         
         self.mapView.delegate = self
         
-        let queue = DispatchQueue(label: "myqueue")
         let url = URL(string:"https://www.mocky.io/v2/5e8317053100004b00e6406c")
         
         if let dataUrl = url {
@@ -40,21 +39,17 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
                                  for controlpoint in trail.controlpoints {
                                     let annotation = MKPointAnnotation()
                                      annotation.title = controlpoint.name
-                                    annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[0], controlpoint.coordinates[1])
+                                    annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[1], controlpoint.coordinates[0])
                                      
                                      mapTrail.append(annotation)
                                  }
                                  self.mapView.showAnnotations(mapTrail, animated: true)
-                        }                    }else{
-                        print("jsonObject")
+                        }
+                        
                     }
                     
-                }else{
-                    print("downloadedData")
                 }
                 
-            }else{
-                print("dataUrl")
             }
         
         
