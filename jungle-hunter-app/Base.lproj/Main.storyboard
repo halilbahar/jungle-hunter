@@ -131,7 +131,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="2q6-Gd-7or" id="c43-qZ-CYJ"/>
-                        <segue destination="AzE-PQ-xJt" kind="show" identifier="controlpointinfo" id="YMR-a0-VX1"/>
+                        <segue destination="AzE-PQ-xJt" kind="show" identifier="ControlpointInfo" id="YMR-a0-VX1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KFA-eX-90p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

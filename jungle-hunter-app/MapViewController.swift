@@ -7,7 +7,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     
     @IBOutlet weak var mapView: MKMapView!
     var routes = [Route]()
-    var controlpoint: ControlPoint!
+    var selectedControlpoint: ControlPoint!
     let routeQueue: DispatchQueue = DispatchQueue.init(label: "MapView-RouteQueue")
     
     @IBAction func searchButton(_ sender: Any) {
@@ -61,19 +61,19 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         for trail in routes[0].trails {
-            for cpoint in trail.controlpoints {
-                if(cpoint.name == mapView.selectedAnnotations[0].title!!) {
-                    self.controlpoint = cpoint
+            for controlpoint in trail.controlpoints {
+                if(controlpoint.name == mapView.selectedAnnotations[0].title!!) {
+                    self.selectedControlpoint = controlpoint
                     break
                 }
             }
         }
-        performSegue(withIdentifier: "controlpointinfo", sender: nil)
+        performSegue(withIdentifier: "ControlpointInfo", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controlpointinfoVC = segue.destination as? ControlpointInfoViewController {
-            controlpointinfoVC.controlpoint = controlpoint
+        if let controlpointInfoVC = segue.destination as? ControlpointInfoViewController {
+            controlpointInfoVC.controlpoint = selectedControlpoint
         }
     }
     
