@@ -10,7 +10,7 @@ class Route {
         self.start = routeDict["start"] as! String
         self.url = routeDict["url"] as! String
         self.description = routeDict["description"] as! String
-        self.trails = (routeDict["trails"] as! [[String:Any]]).map{Trail(trailDict: $0)}
+        self.trails = (routeDict["trails"] as! [[String:Any]]).map{ Trail(trailDict: $0) }
     }
 
     init (name: String, start: String, url: String, description: String,trails: [Trail]) {
