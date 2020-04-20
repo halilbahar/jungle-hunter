@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		177E2998244E1E2C00022843 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E2997244E1E2C00022843 /* Helper.swift */; };
 		1784A9702409038300649676 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A96F2409038300649676 /* MapViewController.swift */; };
 		1784A9742409069D00649676 /* PhotobookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A9732409069D00649676 /* PhotobookViewController.swift */; };
 		1784A9762409084D00649676 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A9752409084D00649676 /* CameraViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		177E2997244E1E2C00022843 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		1784A96F2409038300649676 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1784A9732409069D00649676 /* PhotobookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotobookViewController.swift; sourceTree = "<group>"; };
 		1784A9752409084D00649676 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				1784A9752409084D00649676 /* CameraViewController.swift */,
 				1784A9732409069D00649676 /* PhotobookViewController.swift */,
 				1784A96F2409038300649676 /* MapViewController.swift */,
+				177E2997244E1E2C00022843 /* Helper.swift */,
 				C311CBA6242F8C8E0005DAA1 /* Route.swift */,
 				C312178A2405713D00F25806 /* Assets.xcassets */,
 				C312178C2405713D00F25806 /* LaunchScreen.storyboard */,
@@ -175,6 +178,7 @@
 				C38D6807242A816C00FBCF94 /* ControlpointViewController.swift in Sources */,
 				C38D6809242A817D00FBCF94 /* ControlpointInfoViewController.swift in Sources */,
 				C311CBA7242F8C8E0005DAA1 /* Route.swift in Sources */,
+				177E2998244E1E2C00022843 /* Helper.swift in Sources */,
 				1784A9762409084D00649676 /* CameraViewController.swift in Sources */,
 				1784A9702409038300649676 /* MapViewController.swift in Sources */,
 			);
