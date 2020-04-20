@@ -8,7 +8,7 @@ class Trail {
         self.trailID = trailDict["trailID"] as! String
         self.name = trailDict["name"] as! String
         self.length = Double(trailDict["length"] as! String)!
-        self.controlpoints = (trailDict["controlpoints"] as! [[String:Any]]).map{ControlPoint(controlpointDict: $0)}
+        self.controlpoints = (trailDict["controlpoints"] as! [[String:Any]]).map{ ControlPoint(controlpointDict: $0) }
     }
     
     init (trailID: String ,name: String, length: Double, controlpoints: [ControlPoint]) {
