@@ -1,10 +1,3 @@
-//
-//  CameraViewController.swift
-//  jungle-hunter-app
-//
-//  Created by Sonja Cao on 28.02.20.
-//  Copyright © 2020 htl-leonding. All rights reserved.
-//
 
 import UIKit
 
