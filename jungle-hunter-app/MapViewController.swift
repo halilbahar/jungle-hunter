@@ -29,21 +29,10 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
             if let routes = Helper.getRoutes() {
                 self.routes = routes
             }
+            DispatchQueue.main.sync {
+                self.drawControlpoints()
+            }
         }
-        
-        /*
-         for trail in self.routes[0].trails {
-         var mapTrail = [MKPointAnnotation]()
-         for controlpoint in trail.controlpoints {
-         let annotation = MKPointAnnotation()
-         annotation.title = controlpoint.name
-         annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[0], controlpoint.coordinates[1])
-         
-         mapTrail.append(annotation)
-         }
-         self.mapView.showAnnotations(mapTrail, animated: true)
-         }
-         */
         
         /*
          // MARK: - Navigation
@@ -54,6 +43,20 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
          // Pass the selected object to the new view controller.
          }
          */
+    }
+    
+    func drawControlpoints() {
+        for trail in self.routes[0].trails {
+            var mapTrail = [MKPointAnnotation]()
+            for controlpoint in trail.controlpoints {
+                let annotation = MKPointAnnotation()
+                annotation.title = controlpoint.name
+                annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[0], controlpoint.coordinates[1])
+                
+                mapTrail.append(annotation)
+            }
+            self.mapView.showAnnotations(mapTrail, animated: true)
+        }
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -70,10 +73,8 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controlpointinfoVC = segue.destination as? ControlpointInfoViewController {
-            
             controlpointinfoVC.controlpoint = controlpoint
         }
-        
     }
     
 }
