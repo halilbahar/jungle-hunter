@@ -1,10 +1,3 @@
-//
-//  ControlpointViewController.swift
-//  jungle-hunter-app
-//
-//  Created by Administrator on 24.03.20.
-//  Copyright © 2020 htl-leonding. All rights reserved.
-//
 
 import UIKit
 
@@ -14,57 +7,41 @@ class ControlpointViewController: UIViewController {
     
     var dataSource: DataSourceControlpoints!
     var controlpoints = [ControlPoint]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-
-            // Do any additional setup after loading the view.
-            dataSource = DataSourceControlpoints()
-            tableView.dataSource = dataSource
-            self.tableView.rowHeight = 80
-            
-            self.dataSource.controlpoints = self.controlpoints
-        }
+        // Do any additional setup after loading the view.
+        self.dataSource = DataSourceControlpoints()
+        self.tableView.dataSource = self.dataSource
+        self.tableView.rowHeight = 80
         
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let controlpointinfoVC = segue.destination as? ControlpointInfoViewController {
-                let indexPath = tableView.indexPathForSelectedRow
-                
-                controlpointinfoVC.controlpoint = controlpoints[indexPath!.row]
-            }
-            
-        }
-
-        /*
-        // MARK: - Navigation
-
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // Get the new view controller using segue.destination.
-            // Pass the selected object to the new view controller.
-        }
-        */
-        
-        
-
+        self.dataSource.controlpoints = self.controlpoints
     }
-
-    class DataSourceControlpoints: NSObject, UITableViewDataSource {
-       var controlpoints = [ControlPoint]()
-
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           return controlpoints.count
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "controlpointCell", for: indexPath) as! TableViewCell
-            
-            cell.controlpoint_name.text = controlpoints[indexPath.row].name
-            cell.controlpoint_comment.text = controlpoints[indexPath.row].comment
-         
-            return cell
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controlpointinfoVC = segue.destination as? ControlpointInfoViewController {
+            let indexPath = self.tableView.indexPathForSelectedRow
+            controlpointinfoVC.controlpoint = self.controlpoints[indexPath!.row]
         }
     }
+}
+
+class DataSourceControlpoints: NSObject, UITableViewDataSource {
+    var controlpoints = [ControlPoint]()
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.controlpoints.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "controlpointCell", for: indexPath) as! TableViewCell
+        cell.controlpoint_name.text = self.controlpoints[indexPath.row].name
+        cell.controlpoint_comment.text = self.controlpoints[indexPath.row].comment
+        return cell
+    }
+}
