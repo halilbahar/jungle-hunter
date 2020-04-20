@@ -6,15 +6,15 @@ import MapKit
 class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    var routes = [Route]()
-    var selectedControlpoint: ControlPoint!
-    let routeQueue: DispatchQueue = DispatchQueue.init(label: "MapView-RouteQueue")
-    
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
+    
+    var routes = [Route]()
+    var selectedControlpoint: ControlPoint!
+    let routeQueue: DispatchQueue = DispatchQueue.init(label: "MapView-RouteQueue")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +33,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
                 self.drawControlpoints()
             }
         }
-        
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
     }
     
     func drawControlpoints() {
@@ -76,5 +66,4 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
             controlpointInfoVC.controlpoint = selectedControlpoint
         }
     }
-    
 }
