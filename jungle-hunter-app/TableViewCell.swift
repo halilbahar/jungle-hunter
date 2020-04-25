@@ -9,6 +9,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var controlpoint_name: UILabel!
     @IBOutlet weak var controlpoint_comment: UILabel!
 
+    @IBOutlet weak var search_title: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
