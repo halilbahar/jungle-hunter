@@ -44,7 +44,7 @@ class DataSourceTracks: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trailCell", for: indexPath) as! TableViewCell
         cell.trail_name.text = self.routes[0].trails[indexPath.row].name
-        cell.trail_length.text = String(self.routes[0].trails[indexPath.row].length)
+        cell.trail_length.text = String(self.routes[0].trails[indexPath.row].length) + " km"
         return cell
     }
 }
