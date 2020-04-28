@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175073E524582554007F5EB6 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175073E424582554007F5EB6 /* Coordinate.swift */; };
 		177E2998244E1E2C00022843 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E2997244E1E2C00022843 /* Helper.swift */; };
 		1784A9702409038300649676 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A96F2409038300649676 /* MapViewController.swift */; };
 		1784A9742409069D00649676 /* PhotobookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784A9732409069D00649676 /* PhotobookViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		175073E424582554007F5EB6 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		177E2997244E1E2C00022843 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		1784A96F2409038300649676 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1784A9732409069D00649676 /* PhotobookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotobookViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				C312178F2405713D00F25806 /* Info.plist */,
 				C38D680E242A82E400FBCF94 /* TableViewCell.swift */,
 				C38D6804242A815600FBCF94 /* TrailViewController.swift */,
+				175073E424582554007F5EB6 /* Coordinate.swift */,
 				C38D6806242A816C00FBCF94 /* ControlpointViewController.swift */,
 				C38D6808242A817D00FBCF94 /* ControlpointInfoViewController.swift */,
 				C38D680A242A818A00FBCF94 /* Trail.swift */,
@@ -185,6 +188,7 @@
 				177E2998244E1E2C00022843 /* Helper.swift in Sources */,
 				1784A9762409084D00649676 /* CameraViewController.swift in Sources */,
 				1784A9702409038300649676 /* MapViewController.swift in Sources */,
+				175073E524582554007F5EB6 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
