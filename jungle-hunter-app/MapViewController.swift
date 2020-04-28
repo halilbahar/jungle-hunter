@@ -28,7 +28,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     var selectedControlpoint: ControlPoint!
     let routeQueue: DispatchQueue = DispatchQueue.init(label: "MapView-RouteQueue")
     var resultSearchController: UISearchController!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +62,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
                 self.drawControlpoints()
             }
         }
+        self.drawTrails()
     }
     
     func fetchData() -> [Coordinate] {
@@ -73,6 +73,18 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         }
         print(coordinatesFetch)
         return coordinatesFetch
+    }
+    
+    func drawTrails() {
+        let coordinates = fetchData()
+        var locations = [CLLocationCoordinate2D]()
+        
+        for coordinate in coordinates {
+            locations.append(CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude))
+        }
+        
+        let polyline = MKPolyline(coordinates: locations, count: locations.count)
+        self.mapView.addOverlay(polyline)
     }
     
     func drawControlpoints() {
@@ -87,6 +99,16 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
             }
             self.mapView.showAnnotations(mapTrail, animated: true)
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.red.withAlphaComponent(0.5)
+            polylineRenderer.lineWidth = 5
+            return polylineRenderer
+        }
+        return overlay as! MKOverlayRenderer
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
