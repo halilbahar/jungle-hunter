@@ -121,13 +121,7 @@
                         <viewLayoutGuide key="safeArea" id="CVA-Cj-LXg"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Nvy-jT-CfL">
-                        <barButtonItem key="rightBarButtonItem" image="search" id="two-3O-k43">
-                            <connections>
-                                <action selector="searchButton:" destination="28R-yf-W5M" id="ZEl-aI-5sq"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Nvy-jT-CfL"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="2q6-Gd-7or" id="c43-qZ-CYJ"/>

@@ -6,23 +6,6 @@ import MapKit
 class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-   /* @IBAction func searchButton(_ sender: Any) {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        present(searchController, animated: true, completion: nil)
-        print(mapView.annotations[0].title!!)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(searchBar.text!)
-        var searchAnnotations = [MKAnnotation]()
-        for annotation in mapView.annotations {
-            if((annotation.title)!!.lowercased() == searchBar.text?.lowercased()) {
-                searchAnnotations.append(annotation)
-            }
-        }
-        print(searchAnnotations.count)
-    }*/
     
     var routes = [Route]()
     var selectedControlpoint: ControlPoint!
@@ -43,12 +26,11 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
+        searchBar.placeholder = "Search for controlpoints"
         navigationItem.searchController = resultSearchController
         searchTable.mapSearch = self
         
         resultSearchController?.hidesNavigationBarDuringPresentation = false
-        resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         
         searchTable.mapView = mapView
@@ -130,12 +112,9 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
     }
     
     func zoomIn(annotation: MKAnnotation) {
-        print("test2")
-
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
         mapView.setRegion(region, animated: true)
-        print("test3")
-
+        self.resultSearchController.dismiss(animated: true, completion: nil)
     }
 }

@@ -16,11 +16,14 @@ class SearchTableViewController: UIViewController {
     var mapView: MKMapView? = nil
     @IBOutlet weak var tableView: UITableView!
     var dataSource : DataSourceSearch!
+    var delegateClass : DataSourceDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.dataSource = DataSourceSearch()
+        self.delegateClass = DataSourceDelegate()
+        self.tableView.delegate = delegateClass
         self.tableView.dataSource = dataSource
     }
 
@@ -37,7 +40,8 @@ extension SearchTableViewController: UISearchResultsUpdating {
             }
         }
         self.dataSource.matchingAnnotations = self.matchingAnnotations
-        self.dataSource.mapSearch = self.mapSearch
+        self.delegateClass.mapSearch = self.mapSearch
+        self.delegateClass.matchingAnnotations = self.matchingAnnotations
         self.tableView.reloadData()
     }
     
@@ -46,13 +50,6 @@ extension SearchTableViewController: UISearchResultsUpdating {
 
 class DataSourceSearch: NSObject, UITableViewDataSource {
     var matchingAnnotations:[MKAnnotation] = []
-    var mapSearch: MapViewController?
-    
-    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("test1")
-        self.mapSearch?.zoomIn(annotation: matchingAnnotations[indexPath.row])
-        //dismiss(animated: true, completion: nil)
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -66,5 +63,14 @@ class DataSourceSearch: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! TableViewCell
         cell.search_title.text = self.matchingAnnotations[indexPath.row].title!
         return cell
+    }
+}
+
+class DataSourceDelegate: NSObject, UITableViewDelegate {
+    var matchingAnnotations:[MKAnnotation] = []
+    var mapSearch: MapViewController?
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.mapSearch?.zoomIn(annotation: matchingAnnotations[indexPath.row])
     }
 }
