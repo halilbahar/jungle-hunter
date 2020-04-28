@@ -65,6 +65,16 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
         }
     }
     
+    func fetchData() -> [Coordinate] {
+        let gpxParser = GpxParser()
+        var coordinatesFetch = [Coordinate]()
+        gpxParser.parseFeed(urlString: "http://localhost:3000") { (coordinates) in
+            coordinatesFetch = coordinates
+        }
+        print(coordinatesFetch)
+        return coordinatesFetch
+    }
+    
     func drawControlpoints() {
         for trail in self.routes[0].trails {
             var mapTrail = [MKPointAnnotation]()
