@@ -8,6 +8,21 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         openCamera()
     }
     
+    @IBAction func saveImage(_ sender: Any) {
+        if let image = self.imageView.image {
+            if let imageData = image.jpegData(compressionQuality: 1) {
+                if let compressedImage = UIImage(data: imageData) {
+                    UIImageWriteToSavedPhotosAlbum(compressedImage, nil, nil, nil)
+                }
+            }
+        }
+        
+        let alert = UIAlertController(title: "Saved", message: "Your photo has been saved", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(okayAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     let cameraVC = UIImagePickerController()
     
     override func viewDidLoad() {
