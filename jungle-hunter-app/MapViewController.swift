@@ -41,6 +41,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
                 self.routes = routes
             }
             DispatchQueue.main.sync {
+                searchTable.routes = self.routes
                 self.drawControlpoints()
             }
         }
