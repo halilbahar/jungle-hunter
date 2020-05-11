@@ -72,6 +72,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveImage:" destination="XU5-nH-IJT" eventType="touchUpInside" id="Pkl-h1-T4F"/>
+                                    <segue destination="Mxa-9P-jYP" kind="show" id="cgh-MC-zmh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -140,6 +141,7 @@
                         <viewLayoutGuide key="safeArea" id="SPl-Pe-CDU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Photobook" image="photobook" id="nQj-kq-lto"/>
+                    <navigationItem key="navigationItem" id="6Dz-2H-bgE"/>
                     <connections>
                         <outlet property="collectionView" destination="adn-eL-gFI" id="1DQ-8b-A9N"/>
                     </connections>
@@ -428,6 +430,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="YMR-a0-VX1"/>
+        <segue reference="cgh-MC-zmh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="96"/>

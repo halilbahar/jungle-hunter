@@ -48,4 +48,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let photobookVC = segue.destination as? PhotobookViewController {
+            photobookVC.photos.append(self.imageView.image!)
+        }
+    }
 }
