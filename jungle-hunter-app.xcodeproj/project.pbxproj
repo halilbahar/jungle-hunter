@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174BDDAA246948500070E65D /* PhotobookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174BDDA9246948500070E65D /* PhotobookCollectionViewCell.swift */; };
 		175073E524582554007F5EB6 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175073E424582554007F5EB6 /* Coordinate.swift */; };
 		175073E72458258B007F5EB6 /* GpxParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175073E62458258B007F5EB6 /* GpxParser.swift */; };
 		177E2998244E1E2C00022843 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E2997244E1E2C00022843 /* Helper.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		174BDDA9246948500070E65D /* PhotobookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotobookCollectionViewCell.swift; sourceTree = "<group>"; };
 		175073E424582554007F5EB6 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		175073E62458258B007F5EB6 /* GpxParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpxParser.swift; sourceTree = "<group>"; };
 		177E2997244E1E2C00022843 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				C3178E2A2454775A003B0CFA /* SearchTableViewController.swift */,
 				1784A9752409084D00649676 /* CameraViewController.swift */,
 				1784A9732409069D00649676 /* PhotobookViewController.swift */,
+				174BDDA9246948500070E65D /* PhotobookCollectionViewCell.swift */,
 				1784A96F2409038300649676 /* MapViewController.swift */,
 				177E2997244E1E2C00022843 /* Helper.swift */,
 				C311CBA6242F8C8E0005DAA1 /* Route.swift */,
@@ -193,6 +196,7 @@
 				1784A9762409084D00649676 /* CameraViewController.swift in Sources */,
 				1784A9702409038300649676 /* MapViewController.swift in Sources */,
 				175073E524582554007F5EB6 /* Coordinate.swift in Sources */,
+				174BDDAA246948500070E65D /* PhotobookCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
