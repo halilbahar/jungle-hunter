@@ -24,7 +24,8 @@ class PhotobookViewController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let uploadedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.photos.append(uploadedImage)
+            //self.photos.append(uploadedImage)
+            MyPhotobook.photos.append(uploadedImage)
             print(uploadedImage)
         }
         dismiss(animated: true, completion: nil)
@@ -36,12 +37,12 @@ class PhotobookViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.photos.count
+        return MyPhotobook.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cvCell", for: indexPath) as! PhotobookCollectionViewCell
-        cell.photobookImageView.image = photos[indexPath.item]
+        cell.photobookImageView.image = MyPhotobook.photos[indexPath.item]
         return cell
     }
     

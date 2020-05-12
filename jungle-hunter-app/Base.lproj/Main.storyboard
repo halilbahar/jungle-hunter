@@ -72,7 +72,6 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveImage:" destination="XU5-nH-IJT" eventType="touchUpInside" id="Pkl-h1-T4F"/>
-                                    <segue destination="Mxa-9P-jYP" kind="show" id="cgh-MC-zmh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -128,9 +127,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-cR-S9z">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-cR-S9z">
                                 <rect key="frame" x="347" y="89" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upload"/>
                                 <connections>
                                     <action selector="uploadPhoto:" destination="Mxa-9P-jYP" eventType="touchUpInside" id="nIf-G3-lYo"/>
@@ -138,6 +136,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5Dv-cR-S9z" firstAttribute="leading" secondItem="SPl-Pe-CDU" secondAttribute="leading" constant="347" id="1Qa-21-w7B"/>
+                            <constraint firstItem="5Dv-cR-S9z" firstAttribute="top" secondItem="SPl-Pe-CDU" secondAttribute="top" constant="1" id="GMu-zJ-yhz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SPl-Pe-CDU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Photobook" image="photobook" id="nQj-kq-lto"/>
@@ -430,7 +432,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="YMR-a0-VX1"/>
-        <segue reference="cgh-MC-zmh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="96"/>

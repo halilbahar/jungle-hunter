@@ -13,6 +13,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             if let imageData = image.jpegData(compressionQuality: 1) {
                 if let compressedImage = UIImage(data: imageData) {
                     UIImageWriteToSavedPhotosAlbum(compressedImage, nil, nil, nil)
+                    print(compressedImage)
+                    MyPhotobook.photos.append(contentsOf: self.savedPhotos)
                 }
             }
         }
@@ -24,6 +26,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     let cameraVC = UIImagePickerController()
+    var savedPhotos = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +48,12 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         // populate imageView
         imageView.image = image
+        self.savedPhotos.append(image)
         
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let photobookVC = segue.destination as? PhotobookViewController {
-            photobookVC.photos.append(self.imageView.image!)
-        }
-    }
+}
+
+struct MyPhotobook {
+    static var photos = [UIImage]()
 }
