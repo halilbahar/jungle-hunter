@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tfR-dy-QBG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tfR-dy-QBG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -128,17 +128,26 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dv-cR-S9z">
-                                <rect key="frame" x="347" y="89" width="49" height="30"/>
-                                <state key="normal" title="Upload"/>
+                                <rect key="frame" x="324" y="88" width="81" height="30"/>
+                                <state key="normal" title="Add Images"/>
                                 <connections>
                                     <action selector="uploadPhoto:" destination="Mxa-9P-jYP" eventType="touchUpInside" id="nIf-G3-lYo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HN8-BL-pK1">
+                                <rect key="frame" x="108" y="753" width="198" height="43"/>
+                                <state key="normal" title="Create PDF"/>
+                                <connections>
+                                    <action selector="createPdf:" destination="Mxa-9P-jYP" eventType="touchUpInside" id="RcT-Va-MgT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="5Dv-cR-S9z" firstAttribute="leading" secondItem="SPl-Pe-CDU" secondAttribute="leading" constant="347" id="1Qa-21-w7B"/>
-                            <constraint firstItem="5Dv-cR-S9z" firstAttribute="top" secondItem="SPl-Pe-CDU" secondAttribute="top" constant="1" id="GMu-zJ-yhz"/>
+                            <constraint firstItem="5Dv-cR-S9z" firstAttribute="leading" secondItem="SPl-Pe-CDU" secondAttribute="leading" constant="324" id="1Qa-21-w7B"/>
+                            <constraint firstItem="5Dv-cR-S9z" firstAttribute="top" secondItem="SPl-Pe-CDU" secondAttribute="top" id="GMu-zJ-yhz"/>
+                            <constraint firstItem="HN8-BL-pK1" firstAttribute="centerX" secondItem="o6S-xZ-d4f" secondAttribute="centerX" id="UJh-bl-LDb"/>
+                            <constraint firstItem="HN8-BL-pK1" firstAttribute="centerY" secondItem="o6S-xZ-d4f" secondAttribute="centerY" constant="326.5" id="scw-be-Nye"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SPl-Pe-CDU"/>
                     </view>
@@ -146,6 +155,7 @@
                     <navigationItem key="navigationItem" id="6Dz-2H-bgE"/>
                     <connections>
                         <outlet property="collectionView" destination="adn-eL-gFI" id="1DQ-8b-A9N"/>
+                        <outlet property="createPdfButton" destination="HN8-BL-pK1" id="0TR-XI-lsA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEm-EO-MJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -396,10 +406,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" id="6en-u6-dtI" customClass="TableViewCell" customModule="jungle_hunter_app" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6en-u6-dtI" id="VH2-tm-qF7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lk1-Z1-HI3">
@@ -430,13 +440,13 @@
             <point key="canvasLocation" x="-1801.449275362319" y="512.94642857142856"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="YMR-a0-VX1"/>
-    </inferredMetricsTieBreakers>
     <resources>
-        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="map-icon" width="24" height="24"/>
         <image name="photobook" width="24" height="24"/>
         <image name="search" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YMR-a0-VX1"/>
+    </inferredMetricsTieBreakers>
 </document>

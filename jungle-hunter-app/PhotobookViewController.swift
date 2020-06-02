@@ -4,6 +4,7 @@ import UIKit
 class PhotobookViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var createPdfButton: UIButton!
     
     @IBAction func uploadPhoto(_ sender: Any) {
         self.imagePickerController.allowsEditing = false
@@ -20,6 +21,10 @@ class PhotobookViewController: UIViewController, UIImagePickerControllerDelegate
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.imagePickerController.delegate = self
+        
+        if(!MyPhotobook.photos.isEmpty){
+            self.createPdfButton.isEnabled = true
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -48,5 +53,9 @@ class PhotobookViewController: UIViewController, UIImagePickerControllerDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         return CGSize(width: view.frame.width, height: 150)
+    }
+    
+    @IBAction func createPdf(_ sender: Any) {
+        UploadImages.upload(photos: MyPhotobook.photos)
     }
 }
