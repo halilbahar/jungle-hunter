@@ -3,6 +3,7 @@ package at.htl.junglehunter.dto;
 import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.entity.Trail;
 import at.htl.junglehunter.validaton.Checks;
+import at.htl.junglehunter.validaton.Unique;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.GroupSequence;
@@ -17,7 +18,7 @@ public class RouteDto {
 
     @NotBlank
     @Length(min = 1, max = 100)
-    @at.htl.junglehunter.validaton.Unique(entity = Route.class, field = "name", groups = Checks.Unique.class)
+    @Unique(entity = Route.class, field = "name", groups = Checks.Unique.class)
     private String name;
 
     @NotBlank
