@@ -1,7 +1,7 @@
 Feature: Test the trail endpoint
 
   Background:
-    * url 'http://localhost:8080'
+    * url 'http://localhost:8081'
     * def getLastUrlPart =
     """
     function(url) {
