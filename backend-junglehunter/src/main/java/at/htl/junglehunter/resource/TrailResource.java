@@ -28,7 +28,7 @@ public class TrailResource {
     public Response getAll(@PathParam("route-id") Long routeId) {
         Route route = Route.findById(routeId);
 
-        return Response.ok(Trail.getDtos(route.trails.stream())).build();
+        return Response.ok(Trail.getDtos(route.trails)).build();
     }
 
     @POST

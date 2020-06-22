@@ -71,7 +71,7 @@ public class TrailDto {
                 trail.id,
                 trail.name,
                 trail.length,
-                ControlPoint.getDtos(trail.controlPoints.stream())
+                ControlPoint.getDtos(trail.controlPoints)
         );
     }
 }

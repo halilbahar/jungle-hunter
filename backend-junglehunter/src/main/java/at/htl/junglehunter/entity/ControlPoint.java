@@ -46,8 +46,8 @@ public class ControlPoint extends PanacheEntity {
         this.longitude = controlPoint.getLongitude();
     }
 
-    public static List<ControlPointDto> getDtos(Stream<ControlPoint> entityStream) {
-        return entityStream
+    public static List<ControlPointDto> getDtos(List<ControlPoint> controlPoints) {
+        return controlPoints.stream()
                 .map(ControlPointDto::map)
                 .collect(Collectors.toList());
     }

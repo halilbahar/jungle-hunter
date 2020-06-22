@@ -29,7 +29,7 @@ public class ControlPointResource {
     public Response getAll(@PathParam("trail-id") Long trailId) {
         Trail trail = Trail.findById(trailId);
 
-        return Response.ok(ControlPoint.getDtos(trail.controlPoints.stream())).build();
+        return Response.ok(ControlPoint.getDtos(trail.controlPoints)).build();
     }
 
     @POST

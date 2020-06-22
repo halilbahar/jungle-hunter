@@ -37,8 +37,8 @@ public class Trail extends PanacheEntity {
         this.length = trail.getLength();
     }
 
-    public static List<TrailDto> getDtos(Stream<Trail> entityStream) {
-        return entityStream
+    public static List<TrailDto> getDtos(List<Trail> trails) {
+        return trails.stream()
                 .map(TrailDto::map)
                 .collect(Collectors.toList());
     }

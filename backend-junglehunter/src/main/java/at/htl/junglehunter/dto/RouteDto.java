@@ -98,7 +98,7 @@ public class RouteDto {
                 route.start,
                 route.url,
                 route.description,
-                Trail.getDtos(route.trails.stream())
+                Trail.getDtos(route.trails)
         );
     }
 }
