@@ -11,5 +11,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({TYPE, METHOD})
 @Retention(value = RUNTIME)
 @NameBinding
-public @interface ExistingTrail {
+public @interface ExistingEntity {
 }

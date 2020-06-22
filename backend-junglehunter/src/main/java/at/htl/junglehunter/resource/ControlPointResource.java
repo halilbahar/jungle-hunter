@@ -5,7 +5,7 @@ import at.htl.junglehunter.dto.FileDto;
 import at.htl.junglehunter.entity.ControlPoint;
 import at.htl.junglehunter.entity.Trail;
 import at.htl.junglehunter.entity.User;
-import at.htl.junglehunter.filter.ExistingTrail;
+import at.htl.junglehunter.filter.ExistingEntity;
 import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.FileService;
 import at.htl.junglehunter.service.ValidationService;
@@ -30,7 +30,7 @@ public class ControlPointResource {
 
     @GET
     @Path("/trail/{trail-id}")
-    @ExistingTrail
+    @ExistingEntity
     public Response getAll(@PathParam("trail-id") Long trailId) {
         Trail trail = Trail.findById(trailId);
 
@@ -39,6 +39,7 @@ public class ControlPointResource {
 
     @POST
     @Path("/trail/{trail-id}")
+    @ExistingEntity
     @Transactional
     public Response create(@PathParam("trail-id") Long trailId, ControlPointDto controlPointDto) {
         Trail trail = Trail.findById(trailId);
@@ -57,6 +58,7 @@ public class ControlPointResource {
 
     @DELETE
     @Path("/{control-point-id}")
+    @ExistingEntity
     public Response delete(@PathParam("control-point-id") Long controlPointId) {
         ControlPoint controlPoint = ControlPoint.findById(controlPointId);
         if (controlPoint == null) {
@@ -71,6 +73,7 @@ public class ControlPointResource {
 
     @PUT
     @Path("/{control-point-id}")
+    @ExistingEntity
     @Transactional
     public Response update(@PathParam("control-point-id") Long controlPointId, ControlPointDto controlPointDto) {
         ControlPoint controlPoint = ControlPoint.findById(controlPointId);
@@ -90,6 +93,7 @@ public class ControlPointResource {
 
     @POST
     @Path("{control-point-id}/image")
+    @ExistingEntity
     @Consumes("multipart/form-data")
     @Transactional
     public Response uploadImage(@PathParam("control-point-id") Long controlPointId, @MultipartForm FileDto fileDto) {

@@ -2,6 +2,7 @@ package at.htl.junglehunter.resource;
 
 import at.htl.junglehunter.dto.RouteDto;
 import at.htl.junglehunter.entity.Route;
+import at.htl.junglehunter.filter.ExistingEntity;
 import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.ValidationService;
 import at.htl.junglehunter.validaton.Sequence;
@@ -42,24 +43,18 @@ public class RouteResource {
 
     @GET
     @Path("/{route-id}")
+    @ExistingEntity
     public Response getById(@PathParam("route-id") Long routeId) {
         RouteDto routeDto = Route.getDto(routeId);
-        if (routeDto == null) {
-            return Response.status(404).build();
-        }
-
         return Response.ok(routeDto).build();
     }
 
     @DELETE
     @Path("/{route-id}")
+    @ExistingEntity
     @Transactional
     public Response delete(@PathParam("route-id") Long routeId) {
         Route route = Route.findById(routeId);
-        if (route == null) {
-            return Response.status(404).build();
-        }
-
         RouteDto routeDto = RouteDto.map(route);
         route.delete();
         return Response.ok(routeDto).build();
@@ -67,12 +62,10 @@ public class RouteResource {
 
     @PUT
     @Path("/{route-id}")
+    @ExistingEntity
     @Transactional
     public Response update(@PathParam("route-id") Long routeId, RouteDto routeDto) {
         Route route = Route.findById(routeId);
-        if (route == null) {
-            return Response.status(404).build();
-        }
 
         List<FailedField> failedFields = this.validationService.getFailedFields(routeDto);
         if (!failedFields.isEmpty()) {

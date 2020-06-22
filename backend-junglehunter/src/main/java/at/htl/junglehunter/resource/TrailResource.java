@@ -4,7 +4,7 @@ import at.htl.junglehunter.dto.FileDto;
 import at.htl.junglehunter.dto.TrailDto;
 import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.entity.Trail;
-import at.htl.junglehunter.filter.ExistingTrail;
+import at.htl.junglehunter.filter.ExistingEntity;
 import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.FileService;
 import at.htl.junglehunter.service.ValidationService;
@@ -29,23 +29,18 @@ public class TrailResource {
 
     @GET
     @Path("/route/{route-id}")
+    @ExistingEntity
     public Response getAll(@PathParam("route-id") Long routeId) {
         Route route = Route.findById(routeId);
-        if (route == null) {
-            return Response.status(404).build();
-        }
-
         return Response.ok(Trail.getDtos(route.trails.stream())).build();
     }
 
     @POST
     @Path("/route/{route-id}")
+    @ExistingEntity
     @Transactional
     public Response create(@PathParam("route-id") Long routeId, TrailDto trailDto) {
         Route route = Route.findById(routeId);
-        if (route == null) {
-            return Response.status(404).build();
-        }
 
         List<FailedField> failedFields = this.validationService.getFailedFields(trailDto);
         if (!failedFields.isEmpty()) {
@@ -61,7 +56,7 @@ public class TrailResource {
 
     @DELETE
     @Path("/{trail-id}")
-    @ExistingTrail
+    @ExistingEntity
     @Transactional
     public Response delete(@PathParam("trail-id") Long trailId) {
         Trail trail = Trail.findById(trailId);
@@ -74,7 +69,7 @@ public class TrailResource {
 
     @PUT
     @Path("/{trail-id}")
-    @ExistingTrail
+    @ExistingEntity
     @Transactional
     public Response update(@PathParam("trail-id") Long trailId, TrailDto trailDto) {
         Trail trail = Trail.findById(trailId);
@@ -92,7 +87,7 @@ public class TrailResource {
     @PATCH
     @Path("/{trail-id}")
     @Consumes("multipart/form-data")
-    @ExistingTrail
+    @ExistingEntity
     @Transactional
     public Response uploadGpx(@PathParam("trail-id") Long trailId, @MultipartForm FileDto fileDto) {
         Trail trail = Trail.findById(trailId);
