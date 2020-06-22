@@ -44,11 +44,6 @@ public class Route extends PanacheEntity {
         this.description = route.getDescription();
     }
 
-    public static RouteDto getDto(Long id) {
-        Route route = findById(id);
-        return route == null ? null : RouteDto.map(route);
-    }
-
     public static List<RouteDto> getDtos() {
         Stream<Route> entityStream = Route.streamAll();
         return entityStream

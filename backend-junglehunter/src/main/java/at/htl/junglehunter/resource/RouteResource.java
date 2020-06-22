@@ -33,7 +33,8 @@ public class RouteResource {
     @Path("/{route-id}")
     @ExistingEntity
     public Response getById(@PathParam("route-id") Long routeId) {
-        RouteDto routeDto = Route.getDto(routeId);
+        Route route = Route.findById(routeId);
+        RouteDto routeDto = RouteDto.map(route);
 
         return Response.ok(routeDto).build();
     }
