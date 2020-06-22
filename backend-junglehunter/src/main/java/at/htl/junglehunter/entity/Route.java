@@ -2,13 +2,11 @@ package at.htl.junglehunter.entity;
 
 import at.htl.junglehunter.dto.RouteDto;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,13 +49,10 @@ public class Route extends PanacheEntity {
         return route == null ? null : RouteDto.map(route);
     }
 
-    public static List<RouteDto> getDtos(Stream<Route> entityStream) {
+    public static List<RouteDto> getDtos() {
+        Stream<Route> entityStream = Route.streamAll();
         return entityStream
                 .map(RouteDto::map)
                 .collect(Collectors.toList());
-    }
-
-    public static List<RouteDto> getDtos() {
-        return Route.getDtos(Route.streamAll());
     }
 }
