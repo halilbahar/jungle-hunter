@@ -3,32 +3,33 @@ package at.htl.junglehunter.dto;
 import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.entity.Trail;
 import at.htl.junglehunter.validaton.Checks;
-import at.htl.junglehunter.validaton.Unique;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.GroupSequence;
 import javax.validation.constraints.NotBlank;
 import java.util.LinkedList;
 import java.util.List;
 
+@GroupSequence({RouteDto.class, Checks.Unique.class})
 public class RouteDto {
 
     private Long id;
 
-    @NotBlank(groups = Checks.First.class)
-    @Length(min = 1, max = 100, groups = Checks.Second.class)
-    @Unique(entity = Route.class, field = "name", groups = Checks.Third.class)
+    @NotBlank
+    @Length(min = 1, max = 100)
+    @at.htl.junglehunter.validaton.Unique(entity = Route.class, field = "name", groups = Checks.Unique.class)
     private String name;
 
-    @NotBlank(groups = Checks.First.class)
-    @Length(min = 1, max = 100, groups = Checks.Second.class)
+    @NotBlank
+    @Length(min = 1, max = 100)
     private String start;
 
-    @NotBlank(groups = Checks.First.class)
-    @Length(min = 1, max = 255, groups = Checks.Second.class)
+    @NotBlank
+    @Length(min = 1, max = 255)
     private String url;
 
-    @NotBlank(groups = Checks.First.class)
-    @Length(min = 1, max = 255, groups = Checks.Second.class)
+    @NotBlank
+    @Length(min = 1, max = 255)
     private String description;
 
     private List<TrailDto> trails = new LinkedList<>();

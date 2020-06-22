@@ -1,20 +1,23 @@
 package at.htl.junglehunter.dto;
 
 import at.htl.junglehunter.entity.ControlPoint;
+import at.htl.junglehunter.validaton.Checks;
 import at.htl.junglehunter.validaton.Unique;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
+import javax.validation.GroupSequence;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@GroupSequence({ControlPointDto.class, Checks.Unique.class})
 public class ControlPointDto {
 
     private Long id;
 
     @NotBlank
     @Length(min = 1, max = 50)
-    @Unique(entity = ControlPoint.class, field = "name")
+    @Unique(entity = ControlPoint.class, field = "name", groups = Checks.Unique.class)
     private String name;
 
     @NotBlank

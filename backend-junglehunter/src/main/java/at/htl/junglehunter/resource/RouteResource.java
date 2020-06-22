@@ -5,7 +5,6 @@ import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.filter.ExistingEntity;
 import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.ValidationService;
-import at.htl.junglehunter.validaton.Sequence;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -30,7 +29,7 @@ public class RouteResource {
     @POST
     @Transactional
     public Response create(RouteDto routeDto) {
-        List<FailedField> failedFields = this.validationService.getFailedFields(routeDto, Sequence.Route.class);
+        List<FailedField> failedFields = this.validationService.getFailedFields(routeDto);
         if (!failedFields.isEmpty()) {
             return Response.status(422).entity(failedFields).build();
         }
