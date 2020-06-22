@@ -4,6 +4,7 @@ import at.htl.junglehunter.dto.FileDto;
 import at.htl.junglehunter.dto.TrailDto;
 import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.entity.Trail;
+import at.htl.junglehunter.filter.ExistingTrail;
 import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.FileService;
 import at.htl.junglehunter.service.ValidationService;
@@ -13,7 +14,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.net.URI;
 import java.util.List;
 
 @Path("/trail")
@@ -61,12 +61,10 @@ public class TrailResource {
 
     @DELETE
     @Path("/{trail-id}")
+    @ExistingTrail
     @Transactional
     public Response delete(@PathParam("trail-id") Long trailId) {
         Trail trail = Trail.findById(trailId);
-        if (trail == null) {
-            return Response.status(404).build();
-        }
 
         TrailDto trailDto = TrailDto.map(trail);
         trail.delete();
@@ -76,12 +74,10 @@ public class TrailResource {
 
     @PUT
     @Path("/{trail-id}")
+    @ExistingTrail
     @Transactional
     public Response update(@PathParam("trail-id") Long trailId, TrailDto trailDto) {
         Trail trail = Trail.findById(trailId);
-        if (trail == null) {
-            return Response.status(404).build();
-        }
 
         List<FailedField> failedFields = this.validationService.getFailedFields(trailDto);
         if (!failedFields.isEmpty()) {
@@ -96,12 +92,10 @@ public class TrailResource {
     @PATCH
     @Path("/{trail-id}")
     @Consumes("multipart/form-data")
+    @ExistingTrail
     @Transactional
     public Response uploadGpx(@PathParam("trail-id") Long trailId, @MultipartForm FileDto fileDto) {
         Trail trail = Trail.findById(trailId);
-        if (trail == null) {
-            return Response.status(404).build();
-        }
 
         if (fileDto.getData() == null) {
             return Response.status(400).build();

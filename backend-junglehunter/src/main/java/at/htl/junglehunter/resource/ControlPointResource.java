@@ -5,6 +5,7 @@ import at.htl.junglehunter.dto.FileDto;
 import at.htl.junglehunter.entity.ControlPoint;
 import at.htl.junglehunter.entity.Trail;
 import at.htl.junglehunter.entity.User;
+import at.htl.junglehunter.filter.ExistingTrail;
 import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.FileService;
 import at.htl.junglehunter.service.ValidationService;
@@ -29,11 +30,9 @@ public class ControlPointResource {
 
     @GET
     @Path("/trail/{trail-id}")
+    @ExistingTrail
     public Response getAll(@PathParam("trail-id") Long trailId) {
         Trail trail = Trail.findById(trailId);
-        if (trail == null) {
-            return Response.status(404).build();
-        }
 
         return Response.ok(ControlPoint.getDtos(trail.controlPoints.stream())).build();
     }
@@ -43,9 +42,6 @@ public class ControlPointResource {
     @Transactional
     public Response create(@PathParam("trail-id") Long trailId, ControlPointDto controlPointDto) {
         Trail trail = Trail.findById(trailId);
-        if (trail == null) {
-            return Response.status(404).build();
-        }
 
         List<FailedField> failedFields = this.validationService.getFailedFields(controlPointDto);
         if (!failedFields.isEmpty()) {
