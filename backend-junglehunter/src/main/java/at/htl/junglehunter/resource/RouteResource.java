@@ -3,23 +3,17 @@ package at.htl.junglehunter.resource;
 import at.htl.junglehunter.dto.RouteDto;
 import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.filter.ExistingEntity;
-import at.htl.junglehunter.model.FailedField;
-import at.htl.junglehunter.service.ValidationService;
 
-import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.net.URI;
-import java.util.List;
 
 @Path("/route")
 @Consumes("application/json")
 @Produces("application/json")
 public class RouteResource {
-
-    @Inject
-    ValidationService validationService;
 
     @GET
     public Response getAll() {
@@ -28,12 +22,7 @@ public class RouteResource {
 
     @POST
     @Transactional
-    public Response create(RouteDto routeDto) {
-        List<FailedField> failedFields = this.validationService.getFailedFields(routeDto);
-        if (!failedFields.isEmpty()) {
-            return Response.status(422).entity(failedFields).build();
-        }
-
+    public Response create(@Valid RouteDto routeDto) {
         Route route = routeDto.map();
         route.persist();
 
@@ -45,6 +34,7 @@ public class RouteResource {
     @ExistingEntity
     public Response getById(@PathParam("route-id") Long routeId) {
         RouteDto routeDto = Route.getDto(routeId);
+
         return Response.ok(routeDto).build();
     }
 
@@ -56,6 +46,7 @@ public class RouteResource {
         Route route = Route.findById(routeId);
         RouteDto routeDto = RouteDto.map(route);
         route.delete();
+
         return Response.ok(routeDto).build();
     }
 
@@ -63,14 +54,8 @@ public class RouteResource {
     @Path("/{route-id}")
     @ExistingEntity
     @Transactional
-    public Response update(@PathParam("route-id") Long routeId, RouteDto routeDto) {
+    public Response update(@PathParam("route-id") Long routeId, @Valid RouteDto routeDto) {
         Route route = Route.findById(routeId);
-
-        List<FailedField> failedFields = this.validationService.getFailedFields(routeDto);
-        if (!failedFields.isEmpty()) {
-            return Response.status(422).entity(failedFields).build();
-        }
-
         route.update(routeDto);
 
         return Response.noContent().build();

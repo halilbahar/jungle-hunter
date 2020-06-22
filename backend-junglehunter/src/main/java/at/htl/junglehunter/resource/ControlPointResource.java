@@ -6,24 +6,19 @@ import at.htl.junglehunter.entity.ControlPoint;
 import at.htl.junglehunter.entity.Trail;
 import at.htl.junglehunter.entity.User;
 import at.htl.junglehunter.filter.ExistingEntity;
-import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.FileService;
-import at.htl.junglehunter.service.ValidationService;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 @Path("/control-point")
 @Consumes("application/json")
 @Produces("application/json")
 public class ControlPointResource {
-
-    @Inject
-    ValidationService validationService;
 
     @Inject
     FileService fileService;
@@ -41,14 +36,8 @@ public class ControlPointResource {
     @Path("/trail/{trail-id}")
     @ExistingEntity
     @Transactional
-    public Response create(@PathParam("trail-id") Long trailId, ControlPointDto controlPointDto) {
+    public Response create(@PathParam("trail-id") Long trailId, @Valid ControlPointDto controlPointDto) {
         Trail trail = Trail.findById(trailId);
-
-        List<FailedField> failedFields = this.validationService.getFailedFields(controlPointDto);
-        if (!failedFields.isEmpty()) {
-            return Response.status(422).entity(failedFields).build();
-        }
-
         ControlPoint controlPoint = controlPointDto.map();
         controlPoint.trail = trail;
         controlPoint.persist();
@@ -61,10 +50,6 @@ public class ControlPointResource {
     @ExistingEntity
     public Response delete(@PathParam("control-point-id") Long controlPointId) {
         ControlPoint controlPoint = ControlPoint.findById(controlPointId);
-        if (controlPoint == null) {
-            return Response.status(404).build();
-        }
-
         ControlPointDto controlPointDto = ControlPointDto.map(controlPoint);
         controlPoint.delete();
 
@@ -75,17 +60,8 @@ public class ControlPointResource {
     @Path("/{control-point-id}")
     @ExistingEntity
     @Transactional
-    public Response update(@PathParam("control-point-id") Long controlPointId, ControlPointDto controlPointDto) {
+    public Response update(@PathParam("control-point-id") Long controlPointId, @Valid ControlPointDto controlPointDto) {
         ControlPoint controlPoint = ControlPoint.findById(controlPointId);
-        if (controlPoint == null) {
-            return Response.status(404).build();
-        }
-
-        List<FailedField> failedFields = this.validationService.getFailedFields(controlPointDto);
-        if (!failedFields.isEmpty()) {
-            return Response.status(422).entity(failedFields).build();
-        }
-
         controlPoint.update(controlPointDto);
 
         return Response.noContent().build();
@@ -98,10 +74,6 @@ public class ControlPointResource {
     @Transactional
     public Response uploadImage(@PathParam("control-point-id") Long controlPointId, @MultipartForm FileDto fileDto) {
         ControlPoint controlPoint = ControlPoint.findById(controlPointId);
-        if (controlPoint == null) {
-            return Response.status(404).build();
-        }
-
         if (fileDto.getData() == null) {
             return Response.status(400).build();
         }

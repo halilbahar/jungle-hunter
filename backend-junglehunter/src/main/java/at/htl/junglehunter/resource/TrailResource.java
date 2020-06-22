@@ -5,24 +5,19 @@ import at.htl.junglehunter.dto.TrailDto;
 import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.entity.Trail;
 import at.htl.junglehunter.filter.ExistingEntity;
-import at.htl.junglehunter.model.FailedField;
 import at.htl.junglehunter.service.FileService;
-import at.htl.junglehunter.service.ValidationService;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 @Path("/trail")
 @Consumes("application/json")
 @Produces("application/json")
 public class TrailResource {
-
-    @Inject
-    ValidationService validationService;
 
     @Inject
     FileService fileService;
@@ -32,6 +27,7 @@ public class TrailResource {
     @ExistingEntity
     public Response getAll(@PathParam("route-id") Long routeId) {
         Route route = Route.findById(routeId);
+
         return Response.ok(Trail.getDtos(route.trails.stream())).build();
     }
 
@@ -39,14 +35,8 @@ public class TrailResource {
     @Path("/route/{route-id}")
     @ExistingEntity
     @Transactional
-    public Response create(@PathParam("route-id") Long routeId, TrailDto trailDto) {
+    public Response create(@PathParam("route-id") Long routeId, @Valid TrailDto trailDto) {
         Route route = Route.findById(routeId);
-
-        List<FailedField> failedFields = this.validationService.getFailedFields(trailDto);
-        if (!failedFields.isEmpty()) {
-            return Response.status(422).entity(failedFields).build();
-        }
-
         Trail trail = trailDto.map();
         trail.route = route;
         trail.persist();
@@ -60,7 +50,6 @@ public class TrailResource {
     @Transactional
     public Response delete(@PathParam("trail-id") Long trailId) {
         Trail trail = Trail.findById(trailId);
-
         TrailDto trailDto = TrailDto.map(trail);
         trail.delete();
 
@@ -71,14 +60,8 @@ public class TrailResource {
     @Path("/{trail-id}")
     @ExistingEntity
     @Transactional
-    public Response update(@PathParam("trail-id") Long trailId, TrailDto trailDto) {
+    public Response update(@PathParam("trail-id") Long trailId, @Valid TrailDto trailDto) {
         Trail trail = Trail.findById(trailId);
-
-        List<FailedField> failedFields = this.validationService.getFailedFields(trailDto);
-        if (!failedFields.isEmpty()) {
-            return Response.status(422).entity(failedFields).build();
-        }
-
         trail.update(trailDto);
 
         return Response.noContent().build();
@@ -101,5 +84,4 @@ public class TrailResource {
         this.fileService.uploadFile(fileDto, String.format("/gpx/%d.xml", trailId));
         return Response.noContent().build();
     }
-
 }
