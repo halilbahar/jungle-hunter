@@ -2,7 +2,7 @@ import Foundation
 
 class Helper {
     static func getRoutes() -> [Route]? {
-        let url = URL(string: "http://www.mocky.io/v2/5ea528233000002b14ce2e59")
+        let url = URL(string: "http://localhost:8080/route")
         if let dataUrl = url {
             let data = try? Data(contentsOf: dataUrl)
             if let downloadedData = data {
