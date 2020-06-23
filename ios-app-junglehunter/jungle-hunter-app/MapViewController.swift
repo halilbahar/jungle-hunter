@@ -76,7 +76,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegat
             for controlpoint in trail.controlpoints {
                 let annotation = MKPointAnnotation()
                 annotation.title = controlpoint.name
-                annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.coordinates[0], controlpoint.coordinates[1])
+                annotation.coordinate = CLLocationCoordinate2DMake(controlpoint.latitude, controlpoint.longitude)
                 
                 mapTrail.append(annotation)
             }
