@@ -1,6 +1,7 @@
 package at.htl.junglehunter.resource;
 
 import at.htl.junglehunter.dto.FileDto;
+import at.htl.junglehunter.dto.RouteDto;
 import at.htl.junglehunter.dto.TrailDto;
 import at.htl.junglehunter.entity.Route;
 import at.htl.junglehunter.entity.Trail;
@@ -13,6 +14,8 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import java.net.URI;
 
 @Path("/trail")
 @Consumes("application/json")
@@ -41,7 +44,17 @@ public class TrailResource {
         trail.route = route;
         trail.persist();
 
-        return Response.noContent().build();
+        return Response.created(URI.create("trail/" + trail.id)).build();
+    }
+
+    @GET
+    @Path("/{trail-id}")
+    @ExistingEntity
+    public Response getById(@PathParam("trail-id") Long trailId) {
+        Trail trail = Trail.findById(trailId);
+        TrailDto trailDto = TrailDto.map(trail);
+
+        return Response.ok(trailDto).build();
     }
 
     @DELETE

@@ -30,14 +30,14 @@ Feature: Test the trail endpoint
     And def body = { name: 'Trail Vienna', length: 123.69 }
     And request body
     When method post
-    Then status 204
+    Then status 201
+    * def trailId = getLastUrlPart( responseHeaders['Location'][0] )
 
     Given path 'trail','route', routeId
     When method get
     Then status 200
     Then match response == '#array'
     And def trailGetResponse = response[0]
-    And def trailId = trailGetResponse.id
 
     Given path 'trail', trailId
     When method delete
@@ -128,7 +128,8 @@ Feature: Test the trail endpoint
     And def body = { name: 'Trail Vienna', length: 123.69 }
     And request body
     When method post
-    Then status 204
+    Then status 201
+    * def trailId = getLastUrlPart( responseHeaders['Location'][0] )
 
     Given path 'trail','route', routeId
     And def body = { name: 'Trail Vienna', length: 123.69 }
@@ -141,7 +142,6 @@ Feature: Test the trail endpoint
     Then status 200
     Then match response == '#array'
     And def trailGetResponse = response[0]
-    And def trailId = trailGetResponse.id
 
     Given path 'trail', trailId
     When method delete

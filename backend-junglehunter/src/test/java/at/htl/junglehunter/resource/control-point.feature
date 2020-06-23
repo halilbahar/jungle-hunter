@@ -30,7 +30,7 @@ Feature: Test the control point endpoint
     And def body = { name: 'Trail Upper Austria', length: 123.69 }
     And request body
     When method post
-    Then status 204
+    Then status 201
 
     Given path 'trail','route', routeId
     When method get
@@ -89,7 +89,7 @@ Feature: Test the control point endpoint
     And def body = { name: 'Trail Upper Austria', length: 123.69 }
     And request body
     When method post
-    Then status 204
+    Then status 201
 
     Given path 'trail','route', routeId
     When method get
@@ -119,7 +119,7 @@ Feature: Test the control point endpoint
     And def body =
     """
     {
-      "name": "Route starting in Leonding",
+      "name": "Route starting in Leonding <3",
       "start": "Leonding",
       "url": "https://www.leonding.at/startseite/",
       "description": "This is a route starting in Leonding"
@@ -134,7 +134,7 @@ Feature: Test the control point endpoint
     And def body = { name: 'Trail Upper Austria', length: 123.69 }
     And request body
     When method post
-    Then status 204
+    Then status 201
 
     Given path 'trail','route', routeId
     When method get
