@@ -7,7 +7,6 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -18,8 +17,6 @@ public class EntityIdFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        List<String> valuesList = requestContext.getUriInfo().getPathParameters().get("trail-id");
-
         Map<String, Long> pathParameters = requestContext.getUriInfo().getPathParameters()
                 .entrySet()
                 .stream()
