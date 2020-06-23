@@ -67,8 +67,8 @@ public class TrailResource {
         return Response.noContent().build();
     }
 
-    @PATCH
-    @Path("/{trail-id}")
+    @POST
+    @Path("/{trail-id}/gpx")
     @Consumes("multipart/form-data")
     @ExistingEntity
     @Transactional
@@ -79,9 +79,32 @@ public class TrailResource {
             return Response.status(400).build();
         }
 
+        if (!this.fileService.uploadFile(fileDto, String.format("gpx/%d.xml", trail.id))) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+        }
+
         trail.hasGpx = true;
 
-        this.fileService.uploadFile(fileDto, String.format("/gpx/%d.xml", trailId));
+        return Response.noContent().build();
+    }
+
+    @DELETE
+    @Path("/{trail-id}/gpx")
+    @ExistingEntity
+    @Transactional
+    public Response deleteGpx(@PathParam("trail-id") Long trailId) {
+        Trail trail = Trail.findById(trailId);
+
+        if (!trail.hasGpx) {
+            return Response.status(Status.CONFLICT).build();
+        }
+
+        if (!this.fileService.deleteFile(String.format("gpx/%d.xml", trail.id))) {
+            return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+        }
+
+        trail.hasGpx = false;
+
         return Response.noContent().build();
     }
 }

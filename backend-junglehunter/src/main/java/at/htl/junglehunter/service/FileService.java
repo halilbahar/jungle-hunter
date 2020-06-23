@@ -10,9 +10,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @ApplicationScoped
 public class FileService {
@@ -20,13 +20,22 @@ public class FileService {
     @ConfigProperty(name = "junglehunter.image-path")
     String path;
 
-    public void uploadFile(FileDto fileDto, String filePath) {
+    public boolean uploadFile(FileDto fileDto, String filePath) {
         File file = new File(this.path + "/" + filePath);
         file.getParentFile().mkdirs();
         try {
             Files.write(file.toPath(), fileDto.getData());
-        } catch (IOException e) {
-            e.printStackTrace();
+            return true;
+        } catch (IOException ignored) {
+            return false;
+        }
+    }
+
+    public boolean deleteFile(String filePath) {
+        try {
+            return Files.deleteIfExists(Paths.get(this.path + "/" + filePath));
+        } catch (IOException ignored) {
+            return false;
         }
     }
 
