@@ -6,12 +6,10 @@ import io.quarkus.security.jpa.Password;
 import io.quarkus.security.jpa.Roles;
 import io.quarkus.security.jpa.UserDefinition;
 import io.quarkus.security.jpa.Username;
-import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
-import java.util.UUID;
 
 @Entity
 @Table(name = "_user")
