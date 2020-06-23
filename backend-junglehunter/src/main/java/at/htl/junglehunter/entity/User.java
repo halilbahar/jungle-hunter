@@ -32,8 +32,8 @@ public class User extends PanacheEntity {
     @Transactional
     public static User create(String username, String password) {
         User user = new User();
-        user.username = UUID.randomUUID().toString().replace("-", "");
-        user.password = BcryptUtil.bcryptHash(RandomStringUtils.random(10));
+        user.username = username;
+        user.password = BcryptUtil.bcryptHash(password);
         user.role = "user";
         user.persist();
 

@@ -3,17 +3,21 @@ package at.htl.junglehunter.resource;
 import at.htl.junglehunter.dto.ControlPointDto;
 import at.htl.junglehunter.dto.FileDto;
 import at.htl.junglehunter.entity.ControlPoint;
+import at.htl.junglehunter.entity.Image;
 import at.htl.junglehunter.entity.Trail;
 import at.htl.junglehunter.entity.User;
 import at.htl.junglehunter.filter.ExistingEntity;
 import at.htl.junglehunter.service.FileService;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 @Path("/control-point")
 @Consumes("application/json")
@@ -71,14 +75,21 @@ public class ControlPointResource {
     @Path("{control-point-id}/image")
     @ExistingEntity
     @Consumes("multipart/form-data")
+    @RolesAllowed("user")
     @Transactional
-    public Response uploadImage(@PathParam("control-point-id") Long controlPointId, @MultipartForm FileDto fileDto) {
+    public Response uploadImage(@Context SecurityContext securityContext, @PathParam("control-point-id") Long controlPointId, @MultipartForm FileDto fileDto) {
         ControlPoint controlPoint = ControlPoint.findById(controlPointId);
+        User user = User.find("username", securityContext.getUserPrincipal().getName()).firstResult();
         if (fileDto.getData() == null) {
             return Response.status(400).build();
         }
 
-        this.fileService.uploadImage(fileDto, controlPoint, new User());
+        Image image = new Image(controlPoint, user);
+        image.persist();
+        String filePath = java.nio.file.Path.of(
+                "image", String.valueOf(user.id), String.valueOf(controlPoint.id), String.valueOf(image.id)
+        ).toString();
+        this.fileService.uploadFile(fileDto, filePath);
 
         return Response.noContent().build();
     }

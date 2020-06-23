@@ -1,17 +1,12 @@
 package at.htl.junglehunter.service;
 
 import at.htl.junglehunter.dto.FileDto;
-import at.htl.junglehunter.entity.ControlPoint;
-import at.htl.junglehunter.entity.Image;
-import at.htl.junglehunter.entity.User;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @ApplicationScoped
@@ -37,15 +32,5 @@ public class FileService {
         } catch (IOException ignored) {
             return false;
         }
-    }
-
-    @Transactional
-    public void uploadImage(FileDto fileDto, ControlPoint controlPoint, User user) {
-        Image image = new Image(controlPoint, user);
-        image.persist();
-        String filePath = Path.of(
-                "image", String.valueOf(user.id), String.valueOf(controlPoint.id), String.valueOf(image.id)
-        ).toString();
-        this.uploadFile(fileDto, filePath);
     }
 }
