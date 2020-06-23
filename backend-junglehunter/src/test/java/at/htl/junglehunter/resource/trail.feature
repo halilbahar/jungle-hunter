@@ -15,10 +15,10 @@ Feature: Test the trail endpoint
     And def body =
     """
     {
-      "name": "Laaammoollllaaa",
-      "start": "leonding",
-      "url": "http://localhost",
-      "description": "My description"
+      "name": "Route starting in Vienna",
+      "start": "Vienna",
+      "url": "https://www.wien.gv.at",
+      "description": "This is a route starting in Vienna"
     }
     """
     And request body
